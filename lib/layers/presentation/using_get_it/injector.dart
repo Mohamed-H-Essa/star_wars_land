@@ -3,7 +3,7 @@ import 'package:rickmorty/layers/data/character_repository_impl.dart';
 import 'package:rickmorty/layers/data/source/local/local_storage.dart';
 import 'package:rickmorty/layers/data/source/network/api.dart';
 import 'package:rickmorty/layers/domain/repository/character_repository.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 import 'package:rickmorty/layers/presentation/using_get_it/details_page/controller/character_details_controller.dart';
 import 'package:rickmorty/layers/presentation/using_get_it/list_page/controller/character_page_controller.dart';
 import 'package:rickmorty/main.dart';
@@ -32,7 +32,7 @@ Future<void> initializeGetIt() async {
   // DOMAIN Layer
   // ---------------------------------------------------------------------------
   getIt.registerFactory(
-    () => GetAllCharacters(
+    () => GetAllPeople(
       repository: getIt(),
     ),
   );

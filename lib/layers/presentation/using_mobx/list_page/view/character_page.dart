@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:rickmorty/layers/domain/entity/people.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/entity/person.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item_header.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item_loading.dart';
@@ -27,7 +27,7 @@ class CharacterPage extends StatelessWidget {
     //
     return CharacterView(
       store: CharacterPageStore(
-        getAllCharacters: context.read<GetAllCharacters>(),
+        getAllCharacters: context.read<GetAllPeople>(),
       ),
     );
   }

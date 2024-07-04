@@ -1,18 +1,18 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:rickmorty/layers/domain/entity/people.dart';
+import 'package:rickmorty/layers/domain/entity/person.dart';
 import 'package:rickmorty/layers/domain/repository/character_repository.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 import 'package:test/test.dart';
 
 class MockCharacterRepository extends Mock implements CharacterRepository {}
 
 void main() {
-  late GetAllCharacters getAllCharacters;
+  late GetAllPeople getAllCharacters;
   late MockCharacterRepository mockCharacterRepository;
 
   setUp(() {
     mockCharacterRepository = MockCharacterRepository();
-    getAllCharacters = GetAllCharacters(repository: mockCharacterRepository);
+    getAllCharacters = GetAllPeople(repository: mockCharacterRepository);
   });
 
   group('GetAllCharacters', () {

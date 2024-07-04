@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 import 'package:rickmorty/layers/presentation/using_riverpod/list_page/notifier/character_page_state.dart';
 import 'package:rickmorty/layers/presentation/using_riverpod/providers.dart';
 
@@ -12,11 +12,11 @@ final characterPageStateProvider =
 
 class CharacterStateNotifier extends StateNotifier<CharacterPageState> {
   CharacterStateNotifier({
-    required GetAllCharacters getAllCharacters,
+    required GetAllPeople getAllCharacters,
   })  : _getAllCharacters = getAllCharacters,
         super(const CharacterPageState());
 
-  final GetAllCharacters _getAllCharacters;
+  final GetAllPeople _getAllCharacters;
 
   Future<void> fetchNextPage() async {
     if (state.hasReachedEnd) return;

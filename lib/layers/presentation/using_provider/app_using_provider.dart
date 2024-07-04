@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 import 'package:rickmorty/layers/presentation/using_provider/list_page/view/character_page.dart';
 
 class AppUsingProvider extends StatelessWidget {
   const AppUsingProvider({super.key, required this.getAllCharacters});
 
-  final GetAllCharacters getAllCharacters;
+  final GetAllPeople getAllCharacters;
 
   @override
   Widget build(BuildContext context) {

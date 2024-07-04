@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
-import 'package:rickmorty/layers/domain/entity/people.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/entity/person.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 part 'character_page_event.dart';
@@ -17,7 +17,7 @@ EventTransformer<E> throttleDroppable<E>(Duration duration) {
 
 class CharacterPageBloc extends Bloc<CharacterPageEvent, CharacterPageState> {
   CharacterPageBloc({
-    required GetAllCharacters getAllCharacters,
+    required GetAllPeople getAllCharacters,
   })  : _getAllCharacters = getAllCharacters,
         super(const CharacterPageState()) {
     on<FetchNextPageEvent>(
@@ -26,7 +26,7 @@ class CharacterPageBloc extends Bloc<CharacterPageEvent, CharacterPageState> {
     );
   }
 
-  final GetAllCharacters _getAllCharacters;
+  final GetAllPeople _getAllCharacters;
 
   Future<void> _fetchNextPage(event, Emitter<CharacterPageState> emit) async {
     if (state.hasReachedEnd) return;

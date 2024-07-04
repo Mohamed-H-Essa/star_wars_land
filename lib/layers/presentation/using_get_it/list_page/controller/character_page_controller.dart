@@ -1,15 +1,15 @@
 import 'package:flutter/foundation.dart';
-import 'package:rickmorty/layers/domain/entity/people.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/entity/person.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 
 enum CharacterPageStatus { initial, loading, success, failed }
 
 class CharacterPageController {
   CharacterPageController({
-    required GetAllCharacters getAllCharacters,
+    required GetAllPeople getAllCharacters,
   }) : _getAllCharacters = getAllCharacters;
 
-  final GetAllCharacters _getAllCharacters;
+  final GetAllPeople _getAllCharacters;
 
   final status = ValueNotifier(CharacterPageStatus.initial);
   final characters = ValueNotifier(<Person>[]);

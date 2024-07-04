@@ -3,7 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:rickmorty/layers/data/character_repository_impl.dart';
 import 'package:rickmorty/layers/data/source/local/local_storage.dart';
 import 'package:rickmorty/layers/data/source/network/api.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 import 'package:rickmorty/layers/presentation/theme.dart';
 import 'package:rickmorty/layers/presentation/using_bloc/app_using_bloc.dart';
 import 'package:rickmorty/layers/presentation/using_cubit/app_using_cubit.dart';
@@ -22,7 +22,7 @@ class AppRoot extends StatefulWidget {
 
 class _AppRootState extends State<AppRoot> {
   late StateManagementOptions _currentOption;
-  late GetAllCharacters _getAllCharacters;
+  late GetAllPeople _getAllCharacters;
   var themeMode = ThemeMode.dark;
 
   @override
@@ -43,7 +43,7 @@ class _AppRootState extends State<AppRoot> {
     final localStorage = LocalStorageImpl(sharedPreferences: sharedPref);
     final repo = CharacterRepositoryImpl(api: api, localStorage: localStorage);
 
-    _getAllCharacters = GetAllCharacters(repository: repo);
+    _getAllCharacters = GetAllPeople(repository: repo);
   }
 
   @override

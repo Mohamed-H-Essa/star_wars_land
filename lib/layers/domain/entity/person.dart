@@ -1,7 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:rickmorty/layers/domain/entity/film.dart';
-import 'package:rickmorty/layers/domain/entity/species.dart';
-import 'package:rickmorty/layers/domain/entity/starship.dart';
 
 class Person with EquatableMixin {
   Person({

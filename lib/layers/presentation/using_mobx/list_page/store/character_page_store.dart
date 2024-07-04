@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:rickmorty/layers/domain/entity/people.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/entity/person.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 
 part 'character_page_store.g.dart';
 
@@ -10,10 +10,10 @@ class CharacterPageStore = CharacterPageStoreBase with _$CharacterPageStore;
 
 abstract class CharacterPageStoreBase with Store {
   CharacterPageStoreBase({
-    required GetAllCharacters getAllCharacters,
+    required GetAllPeople getAllCharacters,
   }) : _getAllCharacters = getAllCharacters;
 
-  final GetAllCharacters _getAllCharacters;
+  final GetAllPeople _getAllCharacters;
 
   @readonly
   var _contentStatus = CharacterPageStatus.initial;

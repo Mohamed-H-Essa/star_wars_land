@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item.dart';
 import 'package:rickmorty/layers/presentation/using_get_it/list_page/controller/character_page_controller.dart';
 import 'package:rickmorty/layers/presentation/using_get_it/injector.dart';
@@ -20,7 +20,7 @@ void main() {
           .thenAnswer((_) async => [...characterList1, ...characterList2]);
 
       await getIt.reset();
-      getIt.registerFactory<GetAllCharacters>(() => getAllCharactersMock);
+      getIt.registerFactory<GetAllPeople>(() => getAllCharactersMock);
       getIt.registerLazySingleton<CharacterPageController>(
         () => CharacterPageController(getAllCharacters: getIt()),
       );

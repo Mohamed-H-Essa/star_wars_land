@@ -3,7 +3,7 @@ import 'package:rickmorty/layers/data/character_repository_impl.dart';
 import 'package:rickmorty/layers/data/source/local/local_storage.dart';
 import 'package:rickmorty/layers/data/source/network/api.dart';
 import 'package:rickmorty/layers/domain/repository/character_repository.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 import 'package:rickmorty/main.dart';
 
 // -----------------------------------------------------------------------------
@@ -21,7 +21,7 @@ final characterRepositoryProvider = Provider<CharacterRepository>(
 );
 
 final getAllCharactersProvider = Provider(
-  (ref) => GetAllCharacters(
+  (ref) => GetAllPeople(
     repository: ref.read(characterRepositoryProvider),
   ),
 );

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockingjay/mockingjay.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
+import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
 
-class GetAllCharactersMock extends Mock implements GetAllCharacters {}
+class GetAllCharactersMock extends Mock implements GetAllPeople {}
 
 extension PumpApp on WidgetTester {
   Future<void> pumpApp(
     Widget widget, {
     MockNavigator? navigator,
-    GetAllCharacters? getAllCharacters,
+    GetAllPeople? getAllCharacters,
   }) {
     final innerChild = Scaffold(
       body: widget,
