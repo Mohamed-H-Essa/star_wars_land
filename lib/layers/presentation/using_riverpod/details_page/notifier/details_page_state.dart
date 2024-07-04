@@ -1,7 +1,7 @@
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 
 class DetailsPageState {
   DetailsPageState({this.character});
 
-  Character? character;
+  Person? character;
 }

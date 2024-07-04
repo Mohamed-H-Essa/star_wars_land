@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
 
 enum CharacterPageStatus { initial, loading, success, failed }
@@ -7,7 +7,7 @@ enum CharacterPageStatus { initial, loading, success, failed }
 class CharacterPageChangeNotifier extends ChangeNotifier {
   CharacterPageChangeNotifier({
     required GetAllCharacters getAllCharacters,
-    List<Character>? characters,
+    List<Person>? characters,
     CharacterPageStatus? initialStatus,
     int? initialPage,
   })  : _getAllCharacters = getAllCharacters,
@@ -26,8 +26,8 @@ class CharacterPageChangeNotifier extends ChangeNotifier {
   CharacterPageStatus _status;
   CharacterPageStatus get status => _status;
 
-  final List<Character> _characters;
-  List<Character> get characters => List.unmodifiable(_characters);
+  final List<Person> _characters;
+  List<Person> get characters => List.unmodifiable(_characters);
 
   int _currentPage;
   int get currentPage => _currentPage;

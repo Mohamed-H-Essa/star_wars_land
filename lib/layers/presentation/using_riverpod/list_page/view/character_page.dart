@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item_header.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item_loading.dart';
@@ -111,7 +111,7 @@ class __ContentState extends ConsumerState<_Content> {
     );
   }
 
-  void _goToDetailsPage(Character character) {
+  void _goToDetailsPage(Person character) {
     final route = DetailsPage.route(character: character);
     Navigator.of(context).push(route);
   }

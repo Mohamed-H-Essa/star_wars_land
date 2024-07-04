@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
 
 enum CharacterPageStatus { initial, loading, success, failed }
@@ -12,7 +12,7 @@ class CharacterPageController {
   final GetAllCharacters _getAllCharacters;
 
   final status = ValueNotifier(CharacterPageStatus.initial);
-  final characters = ValueNotifier(<Character>[]);
+  final characters = ValueNotifier(<Person>[]);
   final currentPage = ValueNotifier(1);
   final hasReachedEnd = ValueNotifier(false);
 

@@ -1,5 +1,5 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/domain/repository/character_repository.dart';
 import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
 import 'package:test/test.dart';
@@ -19,8 +19,8 @@ void main() {
     test('call should return a list of characters', () async {
       const page = 0;
       final characters = [
-        Character(id: 1, name: 'Rick Sanchez'),
-        Character(id: 2, name: 'Morty Smith'),
+        Person(id: 1, name: 'Rick Sanchez'),
+        Person(id: 2, name: 'Morty Smith'),
       ];
 
       when(() => mockCharacterRepository.getCharacters(page: page))

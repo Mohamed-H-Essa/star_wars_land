@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item_header.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item_loading.dart';
@@ -97,7 +97,7 @@ class __ContentState extends State<_Content> with GetItStateMixin {
     );
   }
 
-  void _goToDetails(Character character) {
+  void _goToDetails(Person character) {
     final route = CharacterDetailsPage.route(character: character);
     Navigator.of(context).push(route);
   }

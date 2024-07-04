@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 
 part 'character_details_page_store.g.dart';
 
@@ -8,10 +8,10 @@ class CharacterDetailsPageStore = CharacterDetailsPageStoreBase
 
 abstract class CharacterDetailsPageStoreBase with Store {
   CharacterDetailsPageStoreBase({
-    required Character character,
+    required Person character,
   }) : _character = character;
 
   @readonly
   // ignore: prefer_final_fields
-  late Character _character;
+  late Person _character;
 }

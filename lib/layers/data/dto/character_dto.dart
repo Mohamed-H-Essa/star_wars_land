@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:rickmorty/layers/data/dto/location_dto.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 
-class CharacterDto extends Character {
+class CharacterDto extends Person {
   CharacterDto({
     super.id,
     super.name,

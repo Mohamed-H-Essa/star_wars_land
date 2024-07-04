@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/presentation/using_bloc/details_page/bloc/character_details_bloc.dart';
 
 // -----------------------------------------------------------------------------
@@ -10,7 +10,7 @@ import 'package:rickmorty/layers/presentation/using_bloc/details_page/bloc/chara
 class CharacterDetailsPage extends StatelessWidget {
   const CharacterDetailsPage({super.key});
 
-  static Route<void> route({required Character character}) {
+  static Route<void> route({required Person character}) {
     return MaterialPageRoute(
       builder: (context) {
         return BlocProvider(

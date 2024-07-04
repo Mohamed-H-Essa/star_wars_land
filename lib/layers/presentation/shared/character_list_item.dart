@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 
-typedef OnCharacterListItemTap = void Function(Character character);
+typedef OnCharacterListItemTap = void Function(Person character);
 
 class CharacterListItem extends StatelessWidget {
   const CharacterListItem({
@@ -11,7 +11,7 @@ class CharacterListItem extends StatelessWidget {
     this.onTap,
   });
 
-  final Character item;
+  final Person item;
   final OnCharacterListItemTap? onTap;
 
   @override
@@ -43,7 +43,7 @@ class CharacterListItem extends StatelessWidget {
 class _ItemDescription extends StatelessWidget {
   const _ItemDescription({super.key, required this.item});
 
-  final Character item;
+  final Person item;
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +101,7 @@ class _ItemDescription extends StatelessWidget {
 class _ItemPhoto extends StatelessWidget {
   const _ItemPhoto({super.key, required this.item});
 
-  final Character item;
+  final Person item;
 
   @override
   Widget build(BuildContext context) {

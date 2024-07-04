@@ -1,6 +1,6 @@
 import 'package:rickmorty/layers/data/source/local/local_storage.dart';
 import 'package:rickmorty/layers/data/source/network/api.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/domain/repository/character_repository.dart';
 
 class CharacterRepositoryImpl implements CharacterRepository {
@@ -14,7 +14,7 @@ class CharacterRepositoryImpl implements CharacterRepository {
         _localStorage = localStorage;
 
   @override
-  Future<List<Character>> getCharacters({int page = 0}) async {
+  Future<List<Person>> getCharacters({int page = 0}) async {
     final cachedList = _localStorage.loadCharactersPage(page: page);
     if (cachedList.isNotEmpty) {
       return cachedList;

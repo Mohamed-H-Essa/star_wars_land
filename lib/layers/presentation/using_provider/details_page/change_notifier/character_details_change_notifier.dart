@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 
 class CharacterDetailsChangeNotifier extends ChangeNotifier {
   CharacterDetailsChangeNotifier({required this.character});
 
-  final Character character;
+  final Person character;
 }

@@ -1,5 +1,5 @@
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 
 abstract class CharacterRepository {
-  Future<List<Character>> getCharacters({int page = 0});
+  Future<List<Person>> getCharacters({int page = 0});
 }

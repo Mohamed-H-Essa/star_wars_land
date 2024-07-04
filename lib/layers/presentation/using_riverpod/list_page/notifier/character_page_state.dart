@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 
 enum CharacterPageStatus { initial, loading, success, failure }
 
@@ -12,13 +12,13 @@ class CharacterPageState extends Equatable {
   });
 
   final CharacterPageStatus status;
-  final List<Character> characters;
+  final List<Person> characters;
   final bool hasReachedEnd;
   final int currentPage;
 
   CharacterPageState copyWith({
     CharacterPageStatus? status,
-    List<Character>? characters,
+    List<Person>? characters,
     bool? hasReachedEnd,
     int? currentPage,
   }) {

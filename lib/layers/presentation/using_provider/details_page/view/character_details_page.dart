@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/presentation/using_provider/details_page/change_notifier/character_details_change_notifier.dart';
 
 // -----------------------------------------------------------------------------
@@ -10,7 +10,7 @@ import 'package:rickmorty/layers/presentation/using_provider/details_page/change
 class CharacterDetailsPage extends StatelessWidget {
   const CharacterDetailsPage({super.key});
 
-  static Route<void> route({required Character character}) {
+  static Route<void> route({required Person character}) {
     return MaterialPageRoute(
       builder: (context) {
         return ChangeNotifierProvider(
@@ -89,7 +89,9 @@ class _Content extends StatelessWidget {
                   Text(
                     'Status: ${character.isAlive ? 'ALIVE!' : 'DEAD!!'}',
                     style: textTheme.titleMedium!.copyWith(
-                      color: character.isAlive ? Colors.lightGreen : Colors.redAccent,
+                      color: character.isAlive
+                          ? Colors.lightGreen
+                          : Colors.redAccent,
                     ),
                   ),
                   const SizedBox(height: 8),

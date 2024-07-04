@@ -1,4 +1,4 @@
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/presentation/using_cubit/list_page/cubit/character_page_cubit.dart';
 import 'package:test/test.dart';
 
@@ -7,14 +7,14 @@ void main() {
     test('copyWith creates a new instance with the provided values', () {
       final state = CharacterPageState(
         status: CharacterPageStatus.loading,
-        characters: [Character(id: 1, name: 'John')],
+        characters: [Person(id: 1, name: 'John')],
         hasReachedEnd: true,
         currentPage: 2,
       );
 
       final newState = state.copyWith(
         status: CharacterPageStatus.success,
-        characters: [Character(id: 2, name: 'Jane')],
+        characters: [Person(id: 2, name: 'Jane')],
         hasReachedEnd: false,
         currentPage: 3,
       );
@@ -30,7 +30,7 @@ void main() {
     test('copyWith maintains unchanged values', () {
       final state = CharacterPageState(
         status: CharacterPageStatus.loading,
-        characters: [Character(id: 1, name: 'John')],
+        characters: [Person(id: 1, name: 'John')],
         hasReachedEnd: true,
         currentPage: 2,
       );
@@ -46,7 +46,7 @@ void main() {
     test('props returns a list of the object properties', () {
       final state = CharacterPageState(
         status: CharacterPageStatus.loading,
-        characters: [Character(id: 1, name: 'John')],
+        characters: [Person(id: 1, name: 'John')],
         hasReachedEnd: true,
         currentPage: 2,
       );
@@ -63,14 +63,14 @@ void main() {
     test('equivalent instances have the same props', () {
       final state1 = CharacterPageState(
         status: CharacterPageStatus.loading,
-        characters: [Character(id: 1, name: 'John')],
+        characters: [Person(id: 1, name: 'John')],
         hasReachedEnd: true,
         currentPage: 2,
       );
 
       final state2 = CharacterPageState(
         status: CharacterPageStatus.loading,
-        characters: [Character(id: 1, name: 'John')],
+        characters: [Person(id: 1, name: 'John')],
         hasReachedEnd: true,
         currentPage: 2,
       );
@@ -81,14 +81,14 @@ void main() {
     test('distinct instances have different props', () {
       final state1 = CharacterPageState(
         status: CharacterPageStatus.loading,
-        characters: [Character(id: 1, name: 'John')],
+        characters: [Person(id: 1, name: 'John')],
         hasReachedEnd: true,
         currentPage: 2,
       );
 
       final state2 = CharacterPageState(
         status: CharacterPageStatus.success,
-        characters: [Character(id: 2, name: 'Jane')],
+        characters: [Person(id: 2, name: 'Jane')],
         hasReachedEnd: false,
         currentPage: 3,
       );

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/presentation/using_riverpod/details_page/notifier/details_page_notifier.dart';
 
 // -----------------------------------------------------------------------------
@@ -10,9 +10,9 @@ import 'package:rickmorty/layers/presentation/using_riverpod/details_page/notifi
 class DetailsPage extends ConsumerWidget {
   const DetailsPage({super.key, required this.character});
 
-  final Character character;
+  final Person character;
 
-  static Route<void> route({required Character character}) {
+  static Route<void> route({required Person character}) {
     return MaterialPageRoute(
       builder: (context) {
         return DetailsPage(character: character);

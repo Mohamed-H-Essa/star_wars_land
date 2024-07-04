@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 
 part 'character_details_state.dart';
 
 class CharacterDetailsCubit extends Cubit<CharacterDetailsState> {
   CharacterDetailsCubit({
-    required Character character,
+    required Person character,
   }) : super(CharacterDetailsState(character));
 }

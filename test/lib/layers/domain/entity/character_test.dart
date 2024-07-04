@@ -1,17 +1,17 @@
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Character', () {
     test('Two instances with the same properties should be equal', () {
-      final character1 = Character(
+      final character1 = Person(
         id: 1,
         name: 'Rick Sanchez',
         status: 'Alive',
         species: 'Human',
       );
 
-      final character2 = Character(
+      final character2 = Person(
         id: 1,
         name: 'Rick Sanchez',
         status: 'Alive',
@@ -22,14 +22,14 @@ void main() {
     });
 
     test('Two instances with different properties should be different', () {
-      final character1 = Character(
+      final character1 = Person(
         id: 1,
         name: 'Rick Sanchez',
         status: 'Alive',
         species: 'Human',
       );
 
-      final character2 = Character(
+      final character2 = Person(
         id: 2,
         name: 'Morty Smith',
         status: 'Alive',

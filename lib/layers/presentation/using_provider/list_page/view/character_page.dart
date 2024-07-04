@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item.dart';
 import 'package:rickmorty/layers/presentation/shared/character_list_item_header.dart';
@@ -104,7 +104,7 @@ class __ContentState extends State<_Content> {
     );
   }
 
-  void _goToDetailsPage(Character character) {
+  void _goToDetailsPage(Person character) {
     final route = CharacterDetailsPage.route(character: character);
     Navigator.of(context).push(route);
   }

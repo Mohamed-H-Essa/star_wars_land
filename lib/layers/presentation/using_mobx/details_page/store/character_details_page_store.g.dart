@@ -12,16 +12,16 @@ mixin _$CharacterDetailsPageStore on CharacterDetailsPageStoreBase, Store {
   late final _$_characterAtom =
       Atom(name: 'CharacterDetailsPageStoreBase._character', context: context);
 
-  Character get character {
+  Person get character {
     _$_characterAtom.reportRead();
     return super._character;
   }
 
   @override
-  Character get _character => character;
+  Person get _character => character;
 
   @override
-  set _character(Character value) {
+  set _character(Person value) {
     _$_characterAtom.reportWrite(value, super._character, () {
       super._character = value;
     });

@@ -11,13 +11,13 @@ class CharacterPageState extends Equatable {
   });
 
   final CharacterPageStatus status;
-  final List<Character> characters;
+  final List<Person> characters;
   final bool hasReachedEnd;
   final int currentPage;
 
   CharacterPageState copyWith({
     CharacterPageStatus? status,
-    List<Character>? characters,
+    List<Person>? characters,
     bool? hasReachedEnd,
     int? currentPage,
   }) {

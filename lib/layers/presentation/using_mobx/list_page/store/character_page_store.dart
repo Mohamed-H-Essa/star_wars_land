@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:rickmorty/layers/domain/entity/character.dart';
+import 'package:rickmorty/layers/domain/entity/people.dart';
 import 'package:rickmorty/layers/domain/usecase/get_all_characters.dart';
 
 part 'character_page_store.g.dart';
@@ -24,7 +24,7 @@ abstract class CharacterPageStoreBase with Store {
   @readonly
   var _hasReachedEnd = false;
 
-  final charactersList = ObservableList<Character>();
+  final charactersList = ObservableList<Person>();
 
   @action
   Future<void> fetchNextPage() async {
