@@ -22,7 +22,7 @@ class CharacterPageBloc extends Bloc<CharacterPageEvent, CharacterPageState> {
         super(const CharacterPageState()) {
     on<FetchNextPageEvent>(
       _fetchNextPage,
-      transformer: throttleDroppable(const Duration(milliseconds: 100)),
+      transformer: throttleDroppable(const Duration(milliseconds: 10000)),
     );
   }
 
