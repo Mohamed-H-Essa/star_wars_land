@@ -1,5 +1,5 @@
-import 'package:rickmorty/layers/domain/entity/starship.dart';
-import 'package:rickmorty/layers/domain/repository/starwars_repository.dart';
+import 'package:starwars/layers/domain/entity/starship.dart';
+import 'package:starwars/layers/domain/repository/starwars_repository.dart';
 
 class GetAllStarships {
   GetAllStarships({

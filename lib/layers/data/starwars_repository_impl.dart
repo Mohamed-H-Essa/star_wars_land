@@ -1,8 +1,7 @@
-import 'package:rickmorty/layers/data/source/local/local_storage.dart';
-import 'package:rickmorty/layers/data/source/network/api.dart';
-import 'package:rickmorty/layers/domain/entity/person.dart';
-import 'package:rickmorty/layers/domain/repository/starwars_repository.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
+import 'package:starwars/layers/data/source/local/local_storage.dart';
+import 'package:starwars/layers/data/source/network/api.dart';
+import 'package:starwars/layers/domain/entity/person.dart';
+import 'package:starwars/layers/domain/repository/starwars_repository.dart';
 
 class StarwarsRepositoryImpl implements StarwarsRepository {
   final Api _api;
@@ -16,13 +15,13 @@ class StarwarsRepositoryImpl implements StarwarsRepository {
 
   @override
   Future<List<Person>> getPeople({int page = 0}) async {
-    final cachedList = _localStorage.loadCharactersPage(page: page);
+    final cachedList = _localStorage.loadPeoplePage(page: page);
     if (cachedList.isNotEmpty) {
       return cachedList;
     }
 
     final fetchedList = await _api.loadCharacters(page: page);
-    await _localStorage.saveCharactersPage(page: page, list: fetchedList);
+    await _localStorage.savePeoplePage(page: page, list: fetchedList);
     return fetchedList;
   }
 }

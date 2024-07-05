@@ -1,4 +1,4 @@
-import 'package:rickmorty/layers/domain/entity/location.dart';
+import 'package:starwars/layers/domain/entity/location.dart';
 import 'package:test/test.dart';
 
 void main() {

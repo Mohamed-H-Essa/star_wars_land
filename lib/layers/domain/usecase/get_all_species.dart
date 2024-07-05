@@ -1,5 +1,5 @@
-import 'package:rickmorty/layers/domain/entity/species.dart';
-import 'package:rickmorty/layers/domain/repository/starwars_repository.dart';
+import 'package:starwars/layers/domain/entity/species.dart';
+import 'package:starwars/layers/domain/repository/starwars_repository.dart';
 
 class GetAllSpecies {
   GetAllSpecies({

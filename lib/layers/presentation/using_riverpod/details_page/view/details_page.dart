@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rickmorty/layers/domain/entity/person.dart';
-import 'package:rickmorty/layers/presentation/using_riverpod/details_page/notifier/details_page_notifier.dart';
+import 'package:starwars/layers/domain/entity/person.dart';
+import 'package:starwars/layers/presentation/using_riverpod/details_page/notifier/details_page_notifier.dart';
 
 // -----------------------------------------------------------------------------
 // Page

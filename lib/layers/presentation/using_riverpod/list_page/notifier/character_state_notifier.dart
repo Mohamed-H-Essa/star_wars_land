@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
-import 'package:rickmorty/layers/presentation/using_riverpod/list_page/notifier/character_page_state.dart';
-import 'package:rickmorty/layers/presentation/using_riverpod/providers.dart';
+import 'package:starwars/layers/domain/usecase/get_all_people.dart';
+import 'package:starwars/layers/presentation/using_riverpod/list_page/notifier/character_page_state.dart';
+import 'package:starwars/layers/presentation/using_riverpod/providers.dart';
 
 final characterPageStateProvider =
     StateNotifierProvider<CharacterStateNotifier, CharacterPageState>(

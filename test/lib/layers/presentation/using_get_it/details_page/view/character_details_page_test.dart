@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rickmorty/layers/presentation/using_get_it/details_page/controller/character_details_controller.dart';
-import 'package:rickmorty/layers/presentation/using_get_it/details_page/view/character_details_page.dart';
-import 'package:rickmorty/layers/presentation/using_get_it/injector.dart';
+import 'package:starwars/layers/presentation/using_get_it/details_page/controller/character_details_controller.dart';
+import 'package:starwars/layers/presentation/using_get_it/details_page/view/character_details_page.dart';
+import 'package:starwars/layers/presentation/using_get_it/injector.dart';
 
 import '../../../../../../fixtures/fixtures.dart';
 

@@ -1,4 +1,4 @@
-import 'package:rickmorty/layers/data/dto/location_dto.dart';
+import 'package:starwars/layers/data/dto/location_dto.dart';
 import 'package:test/test.dart';
 
 void main() {

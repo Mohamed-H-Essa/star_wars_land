@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:rickmorty/layers/domain/entity/species.dart';
+import 'package:starwars/layers/domain/entity/species.dart';
 
 class SpeciesDto extends Species {
   SpeciesDto({

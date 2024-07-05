@@ -1,4 +1,4 @@
-import 'package:rickmorty/layers/domain/entity/person.dart';
+import 'package:starwars/layers/domain/entity/person.dart';
 
 class DetailsPageState {
   DetailsPageState({this.character});

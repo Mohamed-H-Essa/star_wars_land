@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockingjay/mockingjay.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
+import 'package:starwars/layers/domain/usecase/get_all_people.dart';
 
 class GetAllCharactersMock extends Mock implements GetAllPeople {}
 

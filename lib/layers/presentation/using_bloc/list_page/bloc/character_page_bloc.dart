@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
-import 'package:rickmorty/layers/domain/entity/person.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
+import 'package:starwars/layers/domain/entity/person.dart';
+import 'package:starwars/layers/domain/usecase/get_all_people.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 part 'character_page_event.dart';

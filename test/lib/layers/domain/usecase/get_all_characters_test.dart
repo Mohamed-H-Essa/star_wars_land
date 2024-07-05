@@ -1,7 +1,7 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:rickmorty/layers/domain/entity/person.dart';
-import 'package:rickmorty/layers/domain/repository/character_repository.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
+import 'package:starwars/layers/domain/entity/person.dart';
+import 'package:starwars/layers/domain/repository/character_repository.dart';
+import 'package:starwars/layers/domain/usecase/get_all_people.dart';
 import 'package:test/test.dart';
 
 class MockCharacterRepository extends Mock implements CharacterRepository {}

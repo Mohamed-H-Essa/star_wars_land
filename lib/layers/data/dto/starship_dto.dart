@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:rickmorty/layers/domain/entity/starship.dart';
+import 'package:starwars/layers/domain/entity/starship.dart';
 
 class StarshipDto extends Starship {
   StarshipDto({

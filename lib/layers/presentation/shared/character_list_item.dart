@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:rickmorty/layers/domain/entity/person.dart';
+import 'package:starwars/layers/domain/entity/person.dart';
 
 typedef OnCharacterListItemTap = void Function(Person character);
 

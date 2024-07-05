@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:rickmorty/layers/domain/entity/planet.dart';
+import 'package:starwars/layers/domain/entity/planet.dart';
 
 class PlanetDto extends Planet {
   PlanetDto({

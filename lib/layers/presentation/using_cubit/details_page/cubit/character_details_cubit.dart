@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:rickmorty/layers/domain/entity/person.dart';
+import 'package:starwars/layers/domain/entity/person.dart';
 
 part 'character_details_state.dart';
 

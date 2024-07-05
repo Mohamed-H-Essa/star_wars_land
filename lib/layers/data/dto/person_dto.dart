@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:rickmorty/layers/domain/entity/person.dart';
+import 'package:starwars/layers/domain/entity/person.dart';
 
 class PersonDto extends Person {
   PersonDto({

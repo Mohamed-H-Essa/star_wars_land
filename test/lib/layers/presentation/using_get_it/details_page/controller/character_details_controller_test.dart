@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rickmorty/layers/presentation/using_get_it/details_page/controller/character_details_controller.dart';
+import 'package:starwars/layers/presentation/using_get_it/details_page/controller/character_details_controller.dart';
 
 import '../../../../../../fixtures/fixtures.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rickmorty/layers/domain/entity/person.dart';
-import 'package:rickmorty/layers/presentation/using_bloc/details_page/bloc/character_details_bloc.dart';
+import 'package:starwars/layers/domain/entity/person.dart';
+import 'package:starwars/layers/presentation/using_bloc/details_page/bloc/character_details_bloc.dart';
 
 void main() {
   group('CharacterDetailsPAgeState', () {

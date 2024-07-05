@@ -1,5 +1,5 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:rickmorty/layers/data/source/local/local_storage.dart';
+import 'package:starwars/layers/data/source/local/local_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test/test.dart';
 
@@ -22,7 +22,7 @@ void main() {
           .thenAnswer((_) async => true);
 
       // List 1
-      final result1 = await localStorage.saveCharactersPage(
+      final result1 = await localStorage.savePeoplePage(
         page: 1,
         list: characterList1,
       );
@@ -33,7 +33,7 @@ void main() {
           .called(1);
 
       // List 2
-      final result2 = await localStorage.saveCharactersPage(
+      final result2 = await localStorage.savePeoplePage(
         page: 2,
         list: characterList2,
       );
@@ -53,7 +53,7 @@ void main() {
         characterList1.map((e) => e.toRawJson()).toList(),
       );
 
-      final result1 = localStorage.loadCharactersPage(page: 1);
+      final result1 = localStorage.loadPeoplePage(page: 1);
 
       expect(result1, hasLength(2));
       for (int i = 0; i < characterList1.length; i++) {
@@ -67,7 +67,7 @@ void main() {
         characterList2.map((e) => e.toRawJson()).toList(),
       );
 
-      final result2 = localStorage.loadCharactersPage(page: 2);
+      final result2 = localStorage.loadPeoplePage(page: 2);
 
       expect(result2, hasLength(2));
       for (int i = 0; i < characterList2.length; i++) {

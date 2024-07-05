@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:rickmorty/layers/domain/entity/vehicle.dart';
+import 'package:starwars/layers/domain/entity/vehicle.dart';
 
 class VehicleDto extends Vehicle {
   VehicleDto({

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:rickmorty/layers/domain/entity/film.dart';
+import 'package:starwars/layers/domain/entity/film.dart';
 
 class FilmDto extends Film {
   FilmDto({

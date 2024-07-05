@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:rickmorty/layers/domain/entity/person.dart';
-import 'package:rickmorty/layers/domain/usecase/get_all_people.dart';
+import 'package:starwars/layers/domain/entity/person.dart';
+import 'package:starwars/layers/domain/usecase/get_all_people.dart';
 
 enum CharacterPageStatus { initial, loading, success, failed }
 
