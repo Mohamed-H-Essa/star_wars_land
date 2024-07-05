@@ -96,7 +96,7 @@ class _AppRootState extends State<AppRoot> {
                 //     _currentOption = value;
                 //   }),
                 //   itemBuilder: (context) => [
-                //     _menuEntry(StateManagementOptions.bloc, 'Bloc'),
+                // _menuEntry(StateManagementOptions.bloc, 'Bloc'),
                 //   ],
                 // ),
               ],
