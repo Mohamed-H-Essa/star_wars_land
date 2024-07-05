@@ -6,7 +6,6 @@ import 'package:starwars/layers/domain/usecase/get_all_people.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 part 'person_page_event.dart';
-
 part 'person_page_state.dart';
 
 EventTransformer<E> throttleDroppable<E>(Duration duration) {

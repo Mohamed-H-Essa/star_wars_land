@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starwars/layers/domain/entity/person.dart';
-import 'package:starwars/layers/presentation/using_bloc/details_page/bloc/person_details_bloc.dart';
+import 'package:starwars/layers/presentation/details_page/bloc/person_details_bloc.dart';
 
 // -----------------------------------------------------------------------------
 // Page
@@ -67,9 +67,10 @@ class _Content extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Hero(
-                tag: person.id!,
+                tag: person.url ?? '',
                 child: CachedNetworkImage(
-                  imageUrl: person.image!,
+                  imageUrl:
+                      'https://artofthemovies.co.uk/cdn/shop/products/IMG_1250.jpg?v=1659794460',
                   fit: BoxFit.cover,
                   height: 300,
                 ),
@@ -90,9 +91,9 @@ class _Content extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Status: ${person.isAlive ? 'ALIVE!' : 'DEAD!'}',
+                        'Status: ${person.gender == 'male' ? 'ALIVE!' : 'DEAD!'}',
                         style: textTheme.titleMedium!.copyWith(
-                          color: person.isAlive
+                          color: person.gender == 'male'
                               ? Colors.lightGreen
                               : Colors.redAccent,
                         ),
@@ -101,14 +102,14 @@ class _Content extends StatelessWidget {
                       const Divider(height: 1),
                       const SizedBox(height: 16),
                       Text(
-                        'Origin: ${person.origin?.name ?? ''}',
+                        'Birth Year: ${person.birthYear ?? ''}',
                         style: textTheme.bodyMedium!.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Last location: ${person.location?.name ?? ''}',
+                        'Eye Color: ${person.eyeColor ?? ''}',
                         style: textTheme.bodyMedium!.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
@@ -122,7 +123,7 @@ class _Content extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Type: ${person.type ?? '?'}',
+                        'Mass: ${person.mass ?? '?'}',
                         style: textTheme.bodyMedium!.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
@@ -152,9 +153,9 @@ class _Content extends StatelessWidget {
                 height: 80,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: person.episode?.length ?? 0,
+                  itemCount: person.films?.length ?? 0,
                   itemBuilder: (context, index) {
-                    final ep = person.episode![index];
+                    final ep = person.films![index];
                     return EpisodeItem(ep: ep);
                   },
                 ),

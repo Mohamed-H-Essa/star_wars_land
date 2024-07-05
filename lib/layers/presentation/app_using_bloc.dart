@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starwars/layers/domain/usecase/get_all_people.dart';
-import 'package:starwars/layers/presentation/using_bloc/list_page/view/person_page.dart';
+import 'package:starwars/layers/presentation/list_page/view/person_page.dart';
 
 class AppUsingBloc extends StatelessWidget {
   const AppUsingBloc({super.key, required this.getAllPeople});

@@ -77,14 +77,16 @@ class _ItemDescription extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Status: ${item.isAlive ? 'ALIVE' : 'DEAD'}',
+                  'Status: ${item.gender == 'male' ? 'ALIVE' : 'DEAD'}',
                   style: textTheme.labelSmall!.copyWith(
-                    color: item.isAlive ? Colors.lightGreen : Colors.redAccent,
+                    color: item.gender == 'male'
+                        ? Colors.lightGreen
+                        : Colors.redAccent,
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Last location: ${item.location?.name ?? ''}',
+                  'Last location: ${item.mass ?? ''}',
                   style: textTheme.labelSmall!.copyWith(
                     color: colorScheme.onSurfaceVariant,
                   ),
@@ -110,11 +112,12 @@ class _ItemPhoto extends StatelessWidget {
       child: SizedBox(
         height: 122,
         child: Hero(
-          tag: item.id!,
+          tag: item.url ?? '',
           child: CachedNetworkImage(
             height: 122,
             width: 122,
-            imageUrl: item.image!,
+            imageUrl:
+                'https://artofthemovies.co.uk/cdn/shop/products/IMG_1250.jpg?v=1659794460',
             fit: BoxFit.cover,
             errorWidget: (ctx, url, err) => const Icon(Icons.error),
             placeholder: (ctx, url) => const Icon(Icons.image),

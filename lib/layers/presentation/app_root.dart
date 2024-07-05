@@ -10,7 +10,7 @@ import 'package:starwars/layers/domain/usecase/get_all_species.dart';
 import 'package:starwars/layers/domain/usecase/get_all_starships.dart';
 import 'package:starwars/layers/domain/usecase/get_all_vehicles.dart';
 import 'package:starwars/layers/presentation/theme.dart';
-import 'package:starwars/layers/presentation/using_bloc/app_using_bloc.dart';
+import 'package:starwars/layers/presentation/app_using_bloc.dart';
 import 'package:starwars/main.dart';
 
 class AppRoot extends StatefulWidget {
@@ -76,7 +76,7 @@ class _AppRootState extends State<AppRoot> {
               title: Transform.translate(
                 offset: const Offset(10, 0),
                 child: Text(
-                  'Rick & Morty\n(${getTitleToOption(_currentOption)})',
+                  'Starwars\n(${getTitleToOption(_currentOption)})',
                   style: tt.headlineLarge!.copyWith(
                     color: cs.onSurfaceVariant,
                     fontWeight: FontWeight.bold,
