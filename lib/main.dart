@@ -5,11 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 enum StateManagementOptions {
   bloc,
-  cubit,
-  provider,
-  riverpod,
-  getIt,
-  mobX,
 }
 
 late SharedPreferences sharedPref;

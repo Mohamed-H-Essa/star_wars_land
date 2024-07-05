@@ -97,11 +97,6 @@ class _AppRootState extends State<AppRoot> {
                   }),
                   itemBuilder: (context) => [
                     _menuEntry(StateManagementOptions.bloc, 'Bloc'),
-                    _menuEntry(StateManagementOptions.cubit, 'Cubit'),
-                    _menuEntry(StateManagementOptions.mobX, 'MobX'),
-                    _menuEntry(StateManagementOptions.getIt, 'GetIT'),
-                    _menuEntry(StateManagementOptions.provider, 'Provider'),
-                    _menuEntry(StateManagementOptions.riverpod, 'Riverpod'),
                   ],
                 ),
               ],
@@ -153,16 +148,6 @@ class _AppRootState extends State<AppRoot> {
     switch (option) {
       case (StateManagementOptions.bloc):
         return 'BLOC';
-      case (StateManagementOptions.cubit):
-        return 'Cubit';
-      case (StateManagementOptions.mobX):
-        return 'MobX';
-      case (StateManagementOptions.getIt):
-        return 'GetIT';
-      case (StateManagementOptions.provider):
-        return 'Provider';
-      case (StateManagementOptions.riverpod):
-        return 'RiverPode';
       default:
         return '';
     }
