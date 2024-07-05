@@ -2,37 +2,36 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:starwars/layers/presentation/using_riverpod/providers.dart';
-import 'package:starwars/layers/presentation/using_riverpod/list_page/view/character_page.dart';
+import 'package:starwars/layers/presentation/using_riverpod/list_page/view/person_page.dart';
 
 import '../../../../../../fixtures/fixtures.dart';
 import '../../../helper/pump_app.dart';
 
 void main() {
-  group('CharacterPage', () {
-    late GetAllCharactersMock getAllCharactersMock;
+  group('PersonPage', () {
+    late GetAllPeopleMock getAllPeopleMock;
 
     setUp(() {
-      getAllCharactersMock = GetAllCharactersMock();
-      when(() => getAllCharactersMock.call(page: any(named: 'page')))
-          .thenAnswer((_) async => [...characterList1, ...characterList2]);
+      getAllPeopleMock = GetAllPeopleMock();
+      when(() => getAllPeopleMock.call(page: any(named: 'page')))
+          .thenAnswer((_) async => [...personList1, ...personList2]);
     });
 
-    testWidgets('renders a CharacterView', (tester) async {
-      when(() => getAllCharactersMock(page: any(named: 'page'))).thenAnswer(
-        (_) async => characterList1,
+    testWidgets('renders a PersonView', (tester) async {
+      when(() => getAllPeopleMock(page: any(named: 'page'))).thenAnswer(
+        (_) async => personList1,
       );
 
       await tester.pumpApp(
         ProviderScope(
           overrides: [
-            getAllCharactersProvider
-                .overrideWith((ref) => getAllCharactersMock),
+            getAllPeopleProvider.overrideWith((ref) => getAllPeopleMock),
           ],
-          child: const CharacterPage(),
+          child: const PersonPage(),
         ),
       );
 
-      expect(find.byType(CharacterView), findsOneWidget);
+      expect(find.byType(PersonView), findsOneWidget);
     });
   });
 }

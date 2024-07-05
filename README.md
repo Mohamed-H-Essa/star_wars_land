@@ -72,7 +72,7 @@ And what about the Dependency rule? Let's put it in simple terms. First, you nee
 
 Usually, when working with this architecture, you'll come across some additional terminology such as Entities, Interface Adapters, Use Cases, DTOs, and other terms. These terms are simply names given to components that also fulfill 'single responsibilities' within the project:
 
-- Entities: Represent the core business objects, often reflecting real-world entities. Examples include Character, Episode, or Location classes. These entities usually correspond to real-world concepts or objects, possessing **_properties_** specific to them and encapsulating behavior through their own **_methods_**. You'll be **_reading, writting, and transforming entities throughout the layers_**
+- Entities: Represent the core business objects, often reflecting real-world entities. Examples include Person, Episode, or Location classes. These entities usually correspond to real-world concepts or objects, possessing **_properties_** specific to them and encapsulating behavior through their own **_methods_**. You'll be **_reading, writting, and transforming entities throughout the layers_**
 
 - Interface Adapters: Also known as Adapters, they're responsible for bridging the gap between layers of the system, **_facilitating the conversion and mapping of data between layers_**. There are various approaches available, such as specialized mapper classes or inheritance. The point is, by using these adapters, each layer can work with data in a format that suits better for its needs. As data moves between layers, it is mapped to a format that is suitable for the next layer. Thus, any future changes can be addressed by modifying these adapters to accommodate the updated format without impacting the layer's internals
 
@@ -116,8 +116,8 @@ Typically, the classes in this layer are responsible for:
 
 This layer represents the core domain of the problem we are addressing, encompassing the business rules. Hence, it should be an independent Dart module without dependencies on external layers. It includes:
 
-- Plain entity classes (like Character entity)
-- Use-case classes that encapsulate the specific business logic for a given use case (like GetAllCharacters, SignInUser, and others...)
+- Plain entity classes (like Person entity)
+- Use-case classes that encapsulate the specific business logic for a given use case (like GetAllPeople, SignInUser, and others...)
 - Abstractions for data access, normally repository or services interfaces
 
 A use-case has no knowledge of the data source, whether it comes from a memory cache, local storage, or the internet. All these implementation details have been abstracted out through the use of Repository Interfaces. From the use-case's perspective, all that matters is that it receives the required data.
@@ -134,7 +134,7 @@ This layer serves as a boundary between our application and the external world. 
 
 ### The DTOs, Entities and States
 
-As mentioned previously, this architecture emphasizes two fundamental principles: 'Separation of Concerns' and 'Single Responsibility.' And to uphold these principles, it is crucial to allow each layer to effectively handle data according to its specific needs. This can be achieved by utilizing classes with specialized characteristics that empower their usage within each layer.
+As mentioned previously, this architecture emphasizes two fundamental principles: 'Separation of Concerns' and 'Single Responsibility.' And to uphold these principles, it is crucial to allow each layer to effectively handle data according to its specific needs. This can be achieved by utilizing classes with specialized personistics that empower their usage within each layer.
 
 In this project, the Data layer employs Data Transfer Objects (DTOs), the Domain layer utilizes Entities, and the Presentation layer the States classes.
 

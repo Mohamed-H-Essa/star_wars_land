@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CharacterListItemHeader extends StatelessWidget {
-  const CharacterListItemHeader({
+class PersonListItemHeader extends StatelessWidget {
+  const PersonListItemHeader({
     super.key,
     required this.titleText,
   });

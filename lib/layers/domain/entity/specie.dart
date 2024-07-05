@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class Species with EquatableMixin {
-  Species({
+class Specie with EquatableMixin {
+  Specie({
     this.averageHeight,
     this.averageLifespan,
     this.classification,

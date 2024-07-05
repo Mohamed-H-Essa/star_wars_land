@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class Film with EquatableMixin {
   Film({
-    this.characters,
+    this.people,
     this.created,
     this.director,
     this.edited,
@@ -18,7 +18,7 @@ class Film with EquatableMixin {
     this.vehicles,
   });
 
-  final List<String>? characters;
+  final List<String>? people;
   final String? created;
   final String? director;
   final String? edited;
@@ -35,7 +35,7 @@ class Film with EquatableMixin {
 
   @override
   List<Object?> get props => [
-        characters,
+        people,
         created,
         director,
         edited,

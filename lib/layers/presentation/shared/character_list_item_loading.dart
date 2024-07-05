@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CharacterListItemLoading extends StatelessWidget {
-  const CharacterListItemLoading({super.key});
+class PersonListItemLoading extends StatelessWidget {
+  const PersonListItemLoading({super.key});
 
   @override
   Widget build(BuildContext context) {

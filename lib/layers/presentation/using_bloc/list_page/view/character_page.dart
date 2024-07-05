@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starwars/layers/domain/entity/person.dart';
 import 'package:starwars/layers/domain/usecase/get_all_people.dart';
-import 'package:starwars/layers/presentation/shared/character_list_item.dart';
-import 'package:starwars/layers/presentation/shared/character_list_item_header.dart';
-import 'package:starwars/layers/presentation/shared/character_list_item_loading.dart';
-import 'package:starwars/layers/presentation/using_bloc/details_page/view/character_details_page.dart';
-import 'package:starwars/layers/presentation/using_bloc/list_page/bloc/character_page_bloc.dart';
+import 'package:starwars/layers/presentation/shared/person_list_item.dart';
+import 'package:starwars/layers/presentation/shared/person_list_item_header.dart';
+import 'package:starwars/layers/presentation/shared/person_list_item_loading.dart';
+import 'package:starwars/layers/presentation/using_bloc/details_page/view/person_details_page.dart';
+import 'package:starwars/layers/presentation/using_bloc/list_page/bloc/person_page_bloc.dart';
 
 // -----------------------------------------------------------------------------
 // Page
 // -----------------------------------------------------------------------------
-class CharacterPage extends StatelessWidget {
-  const CharacterPage({super.key});
+class PersonPage extends StatelessWidget {
+  const PersonPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CharacterPageBloc(
-        getAllCharacters: context.read<GetAllPeople>(),
+      create: (context) => PersonPageBloc(
+        getAllPeople: context.read<GetAllPeople>(),
       )..add(const FetchNextPageEvent()),
-      child: const CharacterView(),
+      child: const PersonView(),
     );
   }
 }
@@ -28,13 +28,13 @@ class CharacterPage extends StatelessWidget {
 // -----------------------------------------------------------------------------
 // View
 // -----------------------------------------------------------------------------
-class CharacterView extends StatelessWidget {
-  const CharacterView({super.key});
+class PersonView extends StatelessWidget {
+  const PersonView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final status = context.select((CharacterPageBloc b) => b.state.status);
-    return status == CharacterPageStatus.initial
+    final status = context.select((PersonPageBloc b) => b.state.status);
+    return status == PersonPageStatus.initial
         ? const Center(child: CircularProgressIndicator())
         : const _Content();
   }
@@ -53,7 +53,7 @@ class _Content extends StatefulWidget {
 class __ContentState extends State<_Content> {
   final _scrollController = ScrollController();
 
-  CharacterPageBloc get pageBloc => context.read<CharacterPageBloc>();
+  PersonPageBloc get pageBloc => context.read<PersonPageBloc>();
 
   @override
   void initState() {
@@ -63,37 +63,35 @@ class __ContentState extends State<_Content> {
 
   @override
   Widget build(BuildContext ctx) {
-    final list = ctx.select((CharacterPageBloc b) => b.state.characters);
-    final hasEnded = ctx.select((CharacterPageBloc b) => b.state.hasReachedEnd);
+    final list = ctx.select((PersonPageBloc b) => b.state.people);
+    final hasEnded = ctx.select((PersonPageBloc b) => b.state.hasReachedEnd);
 
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
       child: ListView.builder(
-        key: const ValueKey('character_page_list_key'),
+        key: const ValueKey('person_page_list_key'),
         controller: _scrollController,
         itemCount: hasEnded ? list.length : list.length + 1,
         itemBuilder: (context, index) {
           if (index >= list.length) {
-            return !hasEnded
-                ? const CharacterListItemLoading()
-                : const SizedBox();
+            return !hasEnded ? const PersonListItemLoading() : const SizedBox();
           }
           final item = list[index];
           return index == 0
               ? Column(
                   children: [
-                    const CharacterListItemHeader(titleText: 'All Characters'),
-                    CharacterListItem(item: item, onTap: _goToDetails),
+                    const PersonListItemHeader(titleText: 'All People'),
+                    PersonListItem(item: item, onTap: _goToDetails),
                   ],
                 )
-              : CharacterListItem(item: item, onTap: _goToDetails);
+              : PersonListItem(item: item, onTap: _goToDetails);
         },
       ),
     );
   }
 
-  void _goToDetails(Person character) {
-    final route = CharacterDetailsPage.route(character: character);
+  void _goToDetails(Person person) {
+    final route = PersonDetailsPage.route(person: person);
     Navigator.of(context).push(route);
   }
 

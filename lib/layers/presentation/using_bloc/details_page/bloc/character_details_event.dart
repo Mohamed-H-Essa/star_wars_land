@@ -1,4 +1,4 @@
-part of 'character_details_bloc.dart';
+part of 'person_details_bloc.dart';
 
 @immutable
-abstract class CharacterDetailsEvent {}
+abstract class PersonDetailsEvent {}

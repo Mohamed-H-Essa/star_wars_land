@@ -22,7 +22,7 @@ class AppRoot extends StatefulWidget {
 
 class _AppRootState extends State<AppRoot> {
   late StateManagementOptions _currentOption;
-  late GetAllPeople _getAllCharacters;
+  late GetAllPeople _getAllPeople;
   var themeMode = ThemeMode.dark;
 
   @override
@@ -43,7 +43,7 @@ class _AppRootState extends State<AppRoot> {
     final localStorage = LocalStorageImpl(sharedPreferences: sharedPref);
     final repo = StarwarsRepositoryImpl(api: api, localStorage: localStorage);
 
-    _getAllCharacters = GetAllPeople(repository: repo);
+    _getAllPeople = GetAllPeople(repository: repo);
   }
 
   @override
@@ -111,17 +111,7 @@ class _AppRootState extends State<AppRoot> {
   Widget _getAppUsing({required StateManagementOptions stateManagement}) {
     switch (stateManagement) {
       case (StateManagementOptions.bloc):
-        return AppUsingBloc(getAllCharacters: _getAllCharacters);
-      case (StateManagementOptions.cubit):
-        return AppUsingCubit(getAllCharacters: _getAllCharacters);
-      case (StateManagementOptions.mobX):
-        return AppUsingMobX(getAllCharacters: _getAllCharacters);
-      case (StateManagementOptions.getIt):
-        return const AppUsingGetIt();
-      case (StateManagementOptions.provider):
-        return AppUsingProvider(getAllCharacters: _getAllCharacters);
-      case (StateManagementOptions.riverpod):
-        return const AppUsingRiverpod();
+        return AppUsingBloc(getAllPeople: _getAllPeople);
       default:
         return Container();
     }

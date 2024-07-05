@@ -2,17 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:starwars/layers/domain/entity/person.dart';
 
-typedef OnCharacterListItemTap = void Function(Person character);
+typedef OnPersonListItemTap = void Function(Person person);
 
-class CharacterListItem extends StatelessWidget {
-  const CharacterListItem({
+class PersonListItem extends StatelessWidget {
+  const PersonListItem({
     super.key,
     required this.item,
     this.onTap,
   });
 
   final Person item;
-  final OnCharacterListItemTap? onTap;
+  final OnPersonListItemTap? onTap;
 
   @override
   Widget build(BuildContext context) {

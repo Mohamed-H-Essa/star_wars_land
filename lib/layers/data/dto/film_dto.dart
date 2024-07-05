@@ -3,7 +3,7 @@ import 'package:starwars/layers/domain/entity/film.dart';
 
 class FilmDto extends Film {
   FilmDto({
-    super.characters,
+    super.people,
     super.created,
     super.director,
     super.edited,
@@ -30,7 +30,7 @@ class FilmDto extends Film {
   // Maps
   // ---------------------------------------------------------------------------
   factory FilmDto.fromMap(Map<String, dynamic> json) => FilmDto(
-        characters: List<String>.from(json['characters'].map((x) => x)),
+        people: List<String>.from(json['people'].map((x) => x)),
         created: json['created'],
         director: json['director'],
         edited: json['edited'],
@@ -47,7 +47,7 @@ class FilmDto extends Film {
       );
 
   Map<String, dynamic> toMap() => {
-        'characters': List<dynamic>.from(characters!.map((x) => x)),
+        'people': List<dynamic>.from(people!.map((x) => x)),
         'created': created,
         'director': director,
         'edited': edited,

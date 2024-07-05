@@ -1,4 +1,4 @@
-import 'package:starwars/layers/domain/entity/species.dart';
+import 'package:starwars/layers/domain/entity/specie.dart';
 import 'package:starwars/layers/domain/repository/starwars_repository.dart';
 
 class GetAllSpecies {
@@ -8,7 +8,7 @@ class GetAllSpecies {
 
   final StarwarsRepository _repository;
 
-  Future<List<Species>> call({int page = 0}) async {
+  Future<List<Specie>> call({int page = 0}) async {
     final list = await _repository.getSpecies(page: page);
     return list;
   }

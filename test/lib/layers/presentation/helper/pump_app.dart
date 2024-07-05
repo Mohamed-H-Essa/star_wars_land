@@ -4,13 +4,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockingjay/mockingjay.dart';
 import 'package:starwars/layers/domain/usecase/get_all_people.dart';
 
-class GetAllCharactersMock extends Mock implements GetAllPeople {}
+class GetAllPeopleMock extends Mock implements GetAllPeople {}
 
 extension PumpApp on WidgetTester {
   Future<void> pumpApp(
     Widget widget, {
     MockNavigator? navigator,
-    GetAllPeople? getAllCharacters,
+    GetAllPeople? getAllPeople,
   }) {
     final innerChild = Scaffold(
       body: widget,
@@ -20,7 +20,7 @@ extension PumpApp on WidgetTester {
       MultiRepositoryProvider(
         providers: [
           RepositoryProvider.value(
-            value: getAllCharacters ?? GetAllCharactersMock(),
+            value: getAllPeople ?? GetAllPeopleMock(),
           ),
         ],
         child: MaterialApp(

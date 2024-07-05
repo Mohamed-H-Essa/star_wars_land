@@ -3,7 +3,7 @@ import 'package:starwars/layers/data/dto/film_dto.dart';
 import 'package:starwars/layers/data/dto/person_dto.dart';
 import 'package:starwars/layers/data/dto/starship_dto.dart';
 import 'package:starwars/layers/data/dto/vehicle_dto.dart';
-import 'package:starwars/layers/data/dto/species_dto.dart';
+import 'package:starwars/layers/data/dto/specie_dto.dart';
 import 'package:starwars/layers/data/dto/planet_dto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,9 +36,9 @@ abstract class LocalStorage {
 
   Future<bool> saveSpeciesPage({
     required int page,
-    required List<SpeciesDto> list,
+    required List<SpecieDto> list,
   });
-  List<SpeciesDto> loadSpeciesPage({required int page});
+  List<SpecieDto> loadSpeciesPage({required int page});
 
   Future<bool> savePlanetsPage({
     required int page,
@@ -135,19 +135,19 @@ class LocalStorageImpl implements LocalStorage {
   }
 
   @override
-  List<SpeciesDto> loadSpeciesPage({required int page}) {
+  List<SpecieDto> loadSpeciesPage({required int page}) {
     final key = getKeyToPage(page, 'species');
     final jsonList = _sharedPref.getStringList(key);
 
     return jsonList != null
-        ? jsonList.map((e) => SpeciesDto.fromRawJson(e)).toList()
+        ? jsonList.map((e) => SpecieDto.fromRawJson(e)).toList()
         : [];
   }
 
   @override
   Future<bool> saveSpeciesPage({
     required int page,
-    required List<SpeciesDto> list,
+    required List<SpecieDto> list,
   }) {
     final jsonList = list.map((e) => e.toRawJson()).toList();
     final key = getKeyToPage(page, 'species');

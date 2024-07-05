@@ -1,37 +1,37 @@
 import 'package:mocktail/mocktail.dart';
 import 'package:starwars/layers/domain/entity/person.dart';
-import 'package:starwars/layers/domain/repository/character_repository.dart';
+import 'package:starwars/layers/domain/repository/person_repository.dart';
 import 'package:starwars/layers/domain/usecase/get_all_people.dart';
 import 'package:test/test.dart';
 
-class MockCharacterRepository extends Mock implements CharacterRepository {}
+class MockPersonRepository extends Mock implements PersonRepository {}
 
 void main() {
-  late GetAllPeople getAllCharacters;
-  late MockCharacterRepository mockCharacterRepository;
+  late GetAllPeople getAllPeople;
+  late MockPersonRepository mockPersonRepository;
 
   setUp(() {
-    mockCharacterRepository = MockCharacterRepository();
-    getAllCharacters = GetAllPeople(repository: mockCharacterRepository);
+    mockPersonRepository = MockPersonRepository();
+    getAllPeople = GetAllPeople(repository: mockPersonRepository);
   });
 
-  group('GetAllCharacters', () {
-    test('call should return a list of characters', () async {
+  group('GetAllPeople', () {
+    test('call should return a list of people', () async {
       const page = 0;
-      final characters = [
+      final people = [
         Person(id: 1, name: 'Rick Sanchez'),
         Person(id: 2, name: 'Morty Smith'),
       ];
 
-      when(() => mockCharacterRepository.getCharacters(page: page))
-          .thenAnswer((_) async => characters);
+      when(() => mockPersonRepository.getPeople(page: page))
+          .thenAnswer((_) async => people);
 
-      final result = await getAllCharacters.call(page: page);
+      final result = await getAllPeople.call(page: page);
 
-      expect(result, equals(characters));
+      expect(result, equals(people));
 
-      verify(() => mockCharacterRepository.getCharacters(page: page)).called(1);
-      verifyNoMoreInteractions(mockCharacterRepository);
+      verify(() => mockPersonRepository.getPeople(page: page)).called(1);
+      verifyNoMoreInteractions(mockPersonRepository);
     });
   });
 }

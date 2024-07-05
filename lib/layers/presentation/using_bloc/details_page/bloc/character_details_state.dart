@@ -1,10 +1,10 @@
-part of 'character_details_bloc.dart';
+part of 'person_details_bloc.dart';
 
-class CharacterDetailsState with EquatableMixin {
-  CharacterDetailsState({required this.character});
+class PersonDetailsState with EquatableMixin {
+  PersonDetailsState({required this.person});
 
-  final Person character;
+  final Person person;
 
   @override
-  List<Object?> get props => [character];
+  List<Object?> get props => [person];
 }

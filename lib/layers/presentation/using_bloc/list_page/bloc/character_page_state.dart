@@ -1,29 +1,29 @@
-part of 'character_page_bloc.dart';
+part of 'person_page_bloc.dart';
 
-enum CharacterPageStatus { initial, loading, success, failure }
+enum PersonPageStatus { initial, loading, success, failure }
 
-class CharacterPageState extends Equatable {
-  const CharacterPageState({
-    this.status = CharacterPageStatus.initial,
-    this.characters = const [],
+class PersonPageState extends Equatable {
+  const PersonPageState({
+    this.status = PersonPageStatus.initial,
+    this.people = const [],
     this.hasReachedEnd = false,
     this.currentPage = 1,
   });
 
-  final CharacterPageStatus status;
-  final List<Person> characters;
+  final PersonPageStatus status;
+  final List<Person> people;
   final bool hasReachedEnd;
   final int currentPage;
 
-  CharacterPageState copyWith({
-    CharacterPageStatus? status,
-    List<Person>? characters,
+  PersonPageState copyWith({
+    PersonPageStatus? status,
+    List<Person>? people,
     bool? hasReachedEnd,
     int? currentPage,
   }) {
-    return CharacterPageState(
+    return PersonPageState(
       status: status ?? this.status,
-      characters: characters ?? this.characters,
+      people: people ?? this.people,
       hasReachedEnd: hasReachedEnd ?? this.hasReachedEnd,
       currentPage: currentPage ?? this.currentPage,
     );
@@ -32,7 +32,7 @@ class CharacterPageState extends Equatable {
   @override
   List<Object> get props => [
         status,
-        characters,
+        people,
         hasReachedEnd,
         currentPage,
       ];

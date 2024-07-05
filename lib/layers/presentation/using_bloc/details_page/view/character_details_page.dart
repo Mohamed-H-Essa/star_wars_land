@@ -2,20 +2,20 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starwars/layers/domain/entity/person.dart';
-import 'package:starwars/layers/presentation/using_bloc/details_page/bloc/character_details_bloc.dart';
+import 'package:starwars/layers/presentation/using_bloc/details_page/bloc/person_details_bloc.dart';
 
 // -----------------------------------------------------------------------------
 // Page
 // -----------------------------------------------------------------------------
-class CharacterDetailsPage extends StatelessWidget {
-  const CharacterDetailsPage({super.key});
+class PersonDetailsPage extends StatelessWidget {
+  const PersonDetailsPage({super.key});
 
-  static Route<void> route({required Person character}) {
+  static Route<void> route({required Person person}) {
     return MaterialPageRoute(
       builder: (context) {
         return BlocProvider(
-          create: (_) => CharacterDetailsBloc(character: character),
-          child: const CharacterDetailsPage(),
+          create: (_) => PersonDetailsBloc(person: person),
+          child: const PersonDetailsPage(),
         );
       },
     );
@@ -23,15 +23,15 @@ class CharacterDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CharacterDetailsView();
+    return const PersonDetailsView();
   }
 }
 
 // -----------------------------------------------------------------------------
 // View
 // -----------------------------------------------------------------------------
-class CharacterDetailsView extends StatelessWidget {
-  const CharacterDetailsView({super.key});
+class PersonDetailsView extends StatelessWidget {
+  const PersonDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,17 +59,17 @@ class _Content extends StatelessWidget {
     return SingleChildScrollView(
       child: Builder(
         builder: (ctx) {
-          final character = ctx.select(
-            (CharacterDetailsBloc b) => b.state.character,
+          final person = ctx.select(
+            (PersonDetailsBloc b) => b.state.person,
           );
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Hero(
-                tag: character.id!,
+                tag: person.id!,
                 child: CachedNetworkImage(
-                  imageUrl: character.image!,
+                  imageUrl: person.image!,
                   fit: BoxFit.cover,
                   height: 300,
                 ),
@@ -82,7 +82,7 @@ class _Content extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        character.name ?? '',
+                        person.name ?? '',
                         style: textTheme.displaySmall!.copyWith(
                           color: colorScheme.onSurfaceVariant,
                           fontWeight: FontWeight.bold,
@@ -90,9 +90,9 @@ class _Content extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Status: ${character.isAlive ? 'ALIVE!' : 'DEAD!'}',
+                        'Status: ${person.isAlive ? 'ALIVE!' : 'DEAD!'}',
                         style: textTheme.titleMedium!.copyWith(
-                          color: character.isAlive
+                          color: person.isAlive
                               ? Colors.lightGreen
                               : Colors.redAccent,
                         ),
@@ -101,35 +101,35 @@ class _Content extends StatelessWidget {
                       const Divider(height: 1),
                       const SizedBox(height: 16),
                       Text(
-                        'Origin: ${character.origin?.name ?? ''}',
+                        'Origin: ${person.origin?.name ?? ''}',
                         style: textTheme.bodyMedium!.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Last location: ${character.location?.name ?? ''}',
+                        'Last location: ${person.location?.name ?? ''}',
                         style: textTheme.bodyMedium!.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Species: ${character.species ?? ''}',
+                        'Species: ${person.species ?? ''}',
                         style: textTheme.bodyMedium!.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Type: ${character.type ?? '?'}',
+                        'Type: ${person.type ?? '?'}',
                         style: textTheme.bodyMedium!.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Gender: ${character.gender ?? ''}',
+                        'Gender: ${person.gender ?? ''}',
                         style: textTheme.bodyMedium!.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
@@ -152,9 +152,9 @@ class _Content extends StatelessWidget {
                 height: 80,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: character.episode?.length ?? 0,
+                  itemCount: person.episode?.length ?? 0,
                   itemBuilder: (context, index) {
-                    final ep = character.episode![index];
+                    final ep = person.episode![index];
                     return EpisodeItem(ep: ep);
                   },
                 ),

@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:starwars/layers/domain/entity/species.dart';
+import 'package:starwars/layers/domain/entity/specie.dart';
 
-class SpeciesDto extends Species {
-  SpeciesDto({
+class SpecieDto extends Specie {
+  SpecieDto({
     super.averageHeight,
     super.averageLifespan,
     super.classification,
@@ -23,15 +23,15 @@ class SpeciesDto extends Species {
   // ---------------------------------------------------------------------------
   // JSON
   // ---------------------------------------------------------------------------
-  factory SpeciesDto.fromRawJson(String str) =>
-      SpeciesDto.fromMap(json.decode(str));
+  factory SpecieDto.fromRawJson(String str) =>
+      SpecieDto.fromMap(json.decode(str));
 
   String toRawJson() => json.encode(toMap());
 
   // ---------------------------------------------------------------------------
   // Maps
   // ---------------------------------------------------------------------------
-  factory SpeciesDto.fromMap(Map<String, dynamic> json) => SpeciesDto(
+  factory SpecieDto.fromMap(Map<String, dynamic> json) => SpecieDto(
         averageHeight: json['average_height'],
         averageLifespan: json['average_lifespan'],
         classification: json['classification'],

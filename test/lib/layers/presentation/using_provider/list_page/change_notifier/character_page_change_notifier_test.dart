@@ -1,74 +1,74 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:starwars/layers/presentation/using_provider/list_page/change_notifier/character_page_change_notifier.dart';
+import 'package:starwars/layers/presentation/using_provider/list_page/change_notifier/person_page_change_notifier.dart';
 
 import '../../../../../../fixtures/fixtures.dart';
 import '../../../helper/pump_app.dart';
 
 void main() {
-  group('CharacterChangeNotifier', () {
-    late GetAllCharactersMock getAllCharactersMock;
-    late CharacterPageChangeNotifier characterChangeNotifier;
+  group('PersonChangeNotifier', () {
+    late GetAllPeopleMock getAllPeopleMock;
+    late PersonPageChangeNotifier personChangeNotifier;
 
     setUp(() {
-      getAllCharactersMock = GetAllCharactersMock();
+      getAllPeopleMock = GetAllPeopleMock();
     });
 
     test('fetchNextPage updates state correctly', () async {
-      characterChangeNotifier = CharacterPageChangeNotifier(
-        getAllCharacters: getAllCharactersMock,
+      personChangeNotifier = PersonPageChangeNotifier(
+        getAllPeople: getAllPeopleMock,
       );
 
-      when(() => getAllCharactersMock.call(page: any(named: 'page')))
-          .thenAnswer((_) async => [...characterList1, ...characterList2]);
+      when(() => getAllPeopleMock.call(page: any(named: 'page')))
+          .thenAnswer((_) async => [...personList1, ...personList2]);
 
       // Set up the initial state
       expect(
-        characterChangeNotifier.status,
-        equals(CharacterPageStatus.initial),
+        personChangeNotifier.status,
+        equals(PersonPageStatus.initial),
       );
 
-      // Set up the response from getAllCharacters
-      final page = characterChangeNotifier.currentPage;
+      // Set up the response from getAllPeople
+      final page = personChangeNotifier.currentPage;
 
-      await characterChangeNotifier.fetchNextPage();
+      await personChangeNotifier.fetchNextPage();
 
       // Verify that the state is updated correctly
       expect(
-        characterChangeNotifier.status,
-        equals(CharacterPageStatus.success),
+        personChangeNotifier.status,
+        equals(PersonPageStatus.success),
       );
-      expect(characterChangeNotifier.currentPage, equals(page + 1));
+      expect(personChangeNotifier.currentPage, equals(page + 1));
       expect(
-        characterChangeNotifier.characters,
+        personChangeNotifier.people,
         equals([
-          ...[...characterList1, ...characterList2],
+          ...[...personList1, ...personList2],
         ]),
       );
-      expect(characterChangeNotifier.hasReachedEnd, equals(false));
+      expect(personChangeNotifier.hasReachedEnd, equals(false));
     });
 
     test('fetchNextPage does not update state when hasReachedEnd is true',
         () async {
       // Set up the initial state with hasReachedEnd = true
-      characterChangeNotifier = CharacterPageChangeNotifier(
-        getAllCharacters: getAllCharactersMock,
+      personChangeNotifier = PersonPageChangeNotifier(
+        getAllPeople: getAllPeopleMock,
       );
 
-      when(() => getAllCharactersMock.call(page: any(named: 'page')))
+      when(() => getAllPeopleMock.call(page: any(named: 'page')))
           .thenAnswer((_) async => []);
 
       // Call the fetchNextPage method
-      await characterChangeNotifier.fetchNextPage();
+      await personChangeNotifier.fetchNextPage();
 
       // Verify that the state remains unchanged
       expect(
-        characterChangeNotifier.status,
-        equals(CharacterPageStatus.success),
+        personChangeNotifier.status,
+        equals(PersonPageStatus.success),
       );
-      expect(characterChangeNotifier.currentPage, equals(2));
-      expect(characterChangeNotifier.characters, isEmpty);
-      expect(characterChangeNotifier.hasReachedEnd, equals(true));
+      expect(personChangeNotifier.currentPage, equals(2));
+      expect(personChangeNotifier.people, isEmpty);
+      expect(personChangeNotifier.hasReachedEnd, equals(true));
     });
   });
 }

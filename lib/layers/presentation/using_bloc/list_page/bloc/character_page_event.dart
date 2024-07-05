@@ -1,12 +1,12 @@
-part of 'character_page_bloc.dart';
+part of 'person_page_bloc.dart';
 
-sealed class CharacterPageEvent extends Equatable {
-  const CharacterPageEvent();
+sealed class PersonPageEvent extends Equatable {
+  const PersonPageEvent();
 
   @override
   List<Object?> get props => [];
 }
 
-final class FetchNextPageEvent extends CharacterPageEvent {
+final class FetchNextPageEvent extends PersonPageEvent {
   const FetchNextPageEvent();
 }

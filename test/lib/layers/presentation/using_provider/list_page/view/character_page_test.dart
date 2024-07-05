@@ -1,38 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:starwars/layers/presentation/shared/character_list_item.dart';
-import 'package:starwars/layers/presentation/using_provider/list_page/view/character_page.dart';
+import 'package:starwars/layers/presentation/shared/person_list_item.dart';
+import 'package:starwars/layers/presentation/using_provider/list_page/view/person_page.dart';
 
 import '../../../../../../fixtures/fixtures.dart';
 import '../../../helper/pump_app.dart';
 
 void main() {
-  group('CharacterPage', () {
-    late GetAllCharactersMock getAllCharactersMock;
+  group('PersonPage', () {
+    late GetAllPeopleMock getAllPeopleMock;
 
     setUp(() async {
-      getAllCharactersMock = GetAllCharactersMock();
-      when(() => getAllCharactersMock.call(page: any(named: 'page')))
-          .thenAnswer((_) async => [...characterList1, ...characterList2]);
+      getAllPeopleMock = GetAllPeopleMock();
+      when(() => getAllPeopleMock.call(page: any(named: 'page')))
+          .thenAnswer((_) async => [...personList1, ...personList2]);
     });
 
-    testWidgets('renders a CharacterView', (tester) async {
+    testWidgets('renders a PersonView', (tester) async {
       await tester.pumpApp(
-        const CharacterPage(),
-        getAllCharacters: getAllCharactersMock,
+        const PersonPage(),
+        getAllPeople: getAllPeopleMock,
       );
 
-      expect(find.byType(CharacterView), findsOneWidget);
+      expect(find.byType(PersonView), findsOneWidget);
     });
 
-    testWidgets('renders a list of Characters widgets', (tester) async {
-      const key = Key('character_page_list_key');
+    testWidgets('renders a list of People widgets', (tester) async {
+      const key = Key('person_page_list_key');
 
       try {
         await tester.pumpApp(
-          const CharacterPage(),
-          getAllCharacters: getAllCharactersMock,
+          const PersonPage(),
+          getAllPeople: getAllPeopleMock,
         );
 
         await tester.pumpAndSettle();
@@ -42,8 +42,8 @@ void main() {
 
       expect(find.byKey(key), findsOneWidget);
       expectLater(
-        find.byType(CharacterListItem),
-        findsNWidgets([...characterList1, ...characterList2].length),
+        find.byType(PersonListItem),
+        findsNWidgets([...personList1, ...personList2].length),
       );
     });
   });

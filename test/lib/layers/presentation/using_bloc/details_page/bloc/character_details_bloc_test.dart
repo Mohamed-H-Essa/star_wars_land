@@ -1,16 +1,16 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:starwars/layers/domain/entity/person.dart';
-import 'package:starwars/layers/presentation/using_bloc/details_page/bloc/character_details_bloc.dart';
+import 'package:starwars/layers/presentation/using_bloc/details_page/bloc/person_details_bloc.dart';
 
 import '../../../../../../fixtures/fixtures.dart';
 
 void main() {
-  group('CharacterDetailsBloc', () {
+  group('PersonDetailsBloc', () {
     test('initial state is correct', () {
-      Person c = characterList1.first;
+      Person c = personList1.first;
 
-      final expected = CharacterDetailsState(character: c);
-      final initial = CharacterDetailsBloc(character: c).state;
+      final expected = PersonDetailsState(person: c);
+      final initial = PersonDetailsBloc(person: c).state;
 
       expect(initial, expected);
     });
