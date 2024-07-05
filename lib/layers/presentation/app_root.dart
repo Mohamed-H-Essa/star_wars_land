@@ -3,14 +3,14 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:starwars/layers/data/starwars_repository_impl.dart';
 import 'package:starwars/layers/data/source/local/local_storage.dart';
 import 'package:starwars/layers/data/source/network/api.dart';
+import 'package:starwars/layers/domain/usecase/get_all_films.dart';
 import 'package:starwars/layers/domain/usecase/get_all_people.dart';
+import 'package:starwars/layers/domain/usecase/get_all_planets.dart';
+import 'package:starwars/layers/domain/usecase/get_all_species.dart';
+import 'package:starwars/layers/domain/usecase/get_all_starships.dart';
+import 'package:starwars/layers/domain/usecase/get_all_vehicles.dart';
 import 'package:starwars/layers/presentation/theme.dart';
 import 'package:starwars/layers/presentation/using_bloc/app_using_bloc.dart';
-import 'package:starwars/layers/presentation/using_cubit/app_using_cubit.dart';
-import 'package:starwars/layers/presentation/using_get_it/app_using_get_it.dart';
-import 'package:starwars/layers/presentation/using_mobx/app_using_mobx.dart';
-import 'package:starwars/layers/presentation/using_provider/app_using_provider.dart';
-import 'package:starwars/layers/presentation/using_riverpod/app_using_riverpod.dart';
 import 'package:starwars/main.dart';
 
 class AppRoot extends StatefulWidget {
@@ -23,6 +23,12 @@ class AppRoot extends StatefulWidget {
 class _AppRootState extends State<AppRoot> {
   late StateManagementOptions _currentOption;
   late GetAllPeople _getAllPeople;
+  late GetAllFilms _getAllFilms;
+  late GetAllPlanets _getAllPlanets;
+  late GetAllSpecies _getAllSpecies;
+  late GetAllStarships _getAllStarships;
+  late GetAllVehicles _getAllVehicles;
+
   var themeMode = ThemeMode.dark;
 
   @override
@@ -44,6 +50,11 @@ class _AppRootState extends State<AppRoot> {
     final repo = StarwarsRepositoryImpl(api: api, localStorage: localStorage);
 
     _getAllPeople = GetAllPeople(repository: repo);
+    _getAllFilms = GetAllFilms(repository: repo);
+    _getAllPlanets = GetAllPlanets(repository: repo);
+    _getAllSpecies = GetAllSpecies(repository: repo);
+    _getAllStarships = GetAllStarships(repository: repo);
+    _getAllVehicles = GetAllVehicles(repository: repo);
   }
 
   @override
