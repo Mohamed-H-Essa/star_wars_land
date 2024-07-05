@@ -13,7 +13,7 @@ class VehicleImageService {
     'X_34_landspeeder.jpg',
   ];
 
-  static String getImagePathFromUrlVehicle(String url) {
+  static String getImagePathFromUrl(String url) {
     String id = '';
     List<String> parts = url.split('/');
     if (parts.length > 1) {

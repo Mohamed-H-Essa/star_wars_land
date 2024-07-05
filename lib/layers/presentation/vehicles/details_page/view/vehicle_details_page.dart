@@ -1,9 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starwars/layers/domain/entity/vehicle.dart';
+import 'package:starwars/layers/presentation/shared/services/vehicle_image_path.dart';
 import 'package:starwars/layers/presentation/vehicles/details_page/bloc/vehicle_details_bloc.dart';
-import 'package:starwars/layers/presentation/shared/presentation/gender_text_icon_widget.dart';
 import 'package:starwars/layers/presentation/shared/services/person_image_path.dart';
 
 // -----------------------------------------------------------------------------
@@ -72,7 +71,7 @@ class _Content extends StatelessWidget {
                 tag: vehicle.url ?? '',
 
                 child: Image.asset(
-                    PersonImageService.getImagePathFromUrl(vehicle.url!)),
+                    VehicleImageService.getImagePathFromUrl(vehicle.url!)),
                 // child: CachedNetworkImage(
                 //   imageUrl:
                 //       'https://artofthemovies.co.uk/cdn/shop/products/IMG_1250.jpg?v=1659794460',

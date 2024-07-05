@@ -48,7 +48,7 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const VehiclePage();
     return const PersonPage();
+    return const VehiclePage();
   }
 }

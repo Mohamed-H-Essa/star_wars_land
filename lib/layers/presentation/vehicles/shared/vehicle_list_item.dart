@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:starwars/layers/domain/entity/vehicle.dart';
-import 'package:starwars/layers/presentation/shared/services/person_image_path.dart';
+import 'package:starwars/layers/presentation/shared/services/vehicle_image_path.dart';
 
 typedef OnVehicleListItemTap = void Function(Vehicle person);
 
@@ -98,7 +98,8 @@ class _ItemPhoto extends StatelessWidget {
         height: 122,
         child: Hero(
           tag: item.url ?? '',
-          child: Image.asset(PersonImageService.getImagePathFromUrl(item.url!)),
+          child:
+              Image.asset(VehicleImageService.getImagePathFromUrl(item.url!)),
         ),
       ),
     );
