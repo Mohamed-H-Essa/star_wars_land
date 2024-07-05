@@ -84,12 +84,15 @@ class ApiImpl implements Api {
     try {
       final Response<Map<String, dynamic>> response =
           await dio.get('$baseUrl/$endpoint/?page=$page');
-      print('page');
+      print('page' + page.toString());
       final l = (response.data!['results'] as List<dynamic>)
           .map((e) => fromMap(e))
           .toList();
       return l;
     } on DioException catch (e) {
+      if (e.response?.statusCode == 404) return [];
+      print('error retreiving');
+      print(e);
       if (e.response != null) {
         print(e.response?.data);
         print(e.response?.headers);

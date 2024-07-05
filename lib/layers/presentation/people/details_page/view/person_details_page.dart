@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starwars/layers/domain/entity/person.dart';
 import 'package:starwars/layers/presentation/details_page/bloc/person_details_bloc.dart';
+import 'package:starwars/layers/presentation/shared/presentation/gender_text_icon_widget.dart';
+import 'package:starwars/layers/presentation/shared/services/get_local_image_path.dart';
 
 // -----------------------------------------------------------------------------
 // Page
@@ -68,12 +70,15 @@ class _Content extends StatelessWidget {
             children: [
               Hero(
                 tag: person.url ?? '',
-                child: CachedNetworkImage(
-                  imageUrl:
-                      'https://artofthemovies.co.uk/cdn/shop/products/IMG_1250.jpg?v=1659794460',
-                  fit: BoxFit.cover,
-                  height: 300,
-                ),
+
+                child: Image.asset(
+                    LocalImageService.getImagePathFromUrl(person.url!)),
+                // child: CachedNetworkImage(
+                //   imageUrl:
+                //       'https://artofthemovies.co.uk/cdn/shop/products/IMG_1250.jpg?v=1659794460',
+                //   fit: BoxFit.cover,
+                //   height: 300,
+                // ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -89,18 +94,21 @@ class _Content extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+
                       const SizedBox(height: 8),
-                      Text(
-                        'Status: ${person.gender == 'male' ? 'ALIVE!' : 'DEAD!'}',
-                        style: textTheme.titleMedium!.copyWith(
-                          color: person.gender == 'male'
-                              ? Colors.lightGreen
-                              : Colors.redAccent,
-                        ),
-                      ),
+                      GenderTextIconWidget(
+                          textStyle: textTheme.bodyMedium!.copyWith(
+                            fontSize: 27,
+                          ),
+                          person: person),
                       const SizedBox(height: 8),
                       const Divider(height: 1),
-                      const SizedBox(height: 16),
+
+                      Builder(
+                        builder: (ctx) {
+                          return _DetailsWidgetList(person: person);
+                        },
+                      ),
                       Text(
                         'Birth Year: ${person.birthYear ?? ''}',
                         style: textTheme.bodyMedium!.copyWith(
@@ -200,6 +208,106 @@ class EpisodeItem extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _DetailsWidgetList extends StatelessWidget {
+  const _DetailsWidgetList({super.key, required this.person});
+  final Person person;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 8),
+        Text(
+          'Birth Year: ${person.birthYear ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Eye Color: ${person.eyeColor ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Gender: ${person.gender ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Hair Color: ${person.hairColor ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Height: ${person.height ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Homeworld: ${person.homeworld ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Mass: ${person.mass ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Skin Color: ${person.skinColor ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Films: ${person.films?.join(', ') ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Species: ${person.species?.join(', ') ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Starships: ${person.starships?.join(', ') ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'URL: ${person.url ?? ''}',
+          style: textTheme.bodyText2?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ],
     );
   }
 }

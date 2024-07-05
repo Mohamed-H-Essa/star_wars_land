@@ -4,10 +4,10 @@ import 'package:starwars/layers/domain/entity/person.dart';
 import 'package:starwars/layers/domain/usecase/get_all_people.dart';
 import 'package:starwars/layers/presentation/details_page/view/person_details_page.dart';
 import 'package:starwars/layers/presentation/list_page/bloc/person_page_bloc.dart';
-import 'package:starwars/layers/presentation/shared/character_list_item.dart';
-import 'package:starwars/layers/presentation/shared/character_list_item_header.dart';
+import 'package:starwars/layers/presentation/shared/person_list_item.dart';
+import 'package:starwars/layers/presentation/shared/person_list_item_header.dart';
 
-import '../../shared/character_list_item_loading.dart';
+import '../../shared/person_list_item_loading.dart';
 
 // -----------------------------------------------------------------------------
 // Page
