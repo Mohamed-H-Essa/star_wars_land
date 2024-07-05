@@ -1,4 +1,4 @@
-class LocalImageService {
+class PersonImageService {
   static const List<String> availableImages = [
     '1.jpg',
     '2.jpg',

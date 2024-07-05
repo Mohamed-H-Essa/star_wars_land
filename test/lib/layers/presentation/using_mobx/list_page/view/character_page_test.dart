@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:starwars/layers/presentation/shared/person_list_item.dart';
+import 'package:starwars/layers/presentation/people/shared/person_list_item.dart';
 import 'package:starwars/layers/presentation/using_mobx/list_page/view/person_page.dart';
 
 import '../../../../../../fixtures/fixtures.dart';

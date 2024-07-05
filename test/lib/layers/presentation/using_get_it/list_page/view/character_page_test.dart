@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:starwars/layers/domain/usecase/get_all_people.dart';
-import 'package:starwars/layers/presentation/shared/person_list_item.dart';
+import 'package:starwars/layers/presentation/people/shared/person_list_item.dart';
 import 'package:starwars/layers/presentation/using_get_it/list_page/controller/person_page_controller.dart';
 import 'package:starwars/layers/presentation/using_get_it/injector.dart';
 import 'package:starwars/layers/presentation/using_get_it/list_page/view/person_page.dart';

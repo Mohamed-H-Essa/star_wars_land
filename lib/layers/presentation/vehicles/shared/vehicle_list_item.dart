@@ -1,20 +1,18 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:starwars/layers/domain/entity/person.dart';
-import 'package:starwars/layers/presentation/shared/presentation/gender_text_icon_widget.dart';
-import 'package:starwars/layers/presentation/shared/services/get_local_image_path.dart';
+import 'package:starwars/layers/domain/entity/vehicle.dart';
+import 'package:starwars/layers/presentation/shared/services/person_image_path.dart';
 
-typedef OnPersonListItemTap = void Function(Person person);
+typedef OnVehicleListItemTap = void Function(Vehicle person);
 
-class PersonListItem extends StatelessWidget {
-  const PersonListItem({
+class VehicleListItem extends StatelessWidget {
+  const VehicleListItem({
     super.key,
     required this.item,
     this.onTap,
   });
 
-  final Person item;
-  final OnPersonListItemTap? onTap;
+  final Vehicle item;
+  final OnVehicleListItemTap? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +43,7 @@ class PersonListItem extends StatelessWidget {
 class _ItemDescription extends StatelessWidget {
   const _ItemDescription({super.key, required this.item});
 
-  final Person item;
+  final Vehicle item;
 
   @override
   Widget build(BuildContext context) {
@@ -78,24 +76,6 @@ class _ItemDescription extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                const SizedBox(height: 8),
-                GenderTextIconWidget(
-                    person: item, textStyle: textTheme.bodyMedium!),
-                // Text(
-                //   'Birth Year: ${item.birthYear}',
-                //   style: textTheme.labelSmall!.copyWith(
-                //     color: item.gender == 'male'
-                //         ? Colors.lightGreen
-                //         : Colors.redAccent,
-                //   ),
-                // ),
-                const SizedBox(height: 4),
-                Text(
-                  'Mass: ${item.mass ?? ''}',
-                  style: textTheme.labelSmall!.copyWith(
-                    color: colorScheme.onSurfaceVariant,
-                  ),
-                ),
               ],
             ),
           ),
@@ -108,7 +88,7 @@ class _ItemDescription extends StatelessWidget {
 class _ItemPhoto extends StatelessWidget {
   const _ItemPhoto({super.key, required this.item});
 
-  final Person item;
+  final Vehicle item;
 
   @override
   Widget build(BuildContext context) {
@@ -118,16 +98,7 @@ class _ItemPhoto extends StatelessWidget {
         height: 122,
         child: Hero(
           tag: item.url ?? '',
-          child: Image.asset(LocalImageService.getImagePathFromUrl(item.url!)),
-          // child: CachedNetworkImage(
-          //   height: 122,
-          //   width: 122,
-          //   imageUrl:
-          //       'https://artofthemovies.co.uk/cdn/shop/products/IMG_1250.jpg?v=1659794460',
-          //   fit: BoxFit.cover,
-          //   errorWidget: (ctx, url, err) => const Icon(Icons.error),
-          //   placeholder: (ctx, url) => const Icon(Icons.image),
-          // ),
+          child: Image.asset(PersonImageService.getImagePathFromUrl(item.url!)),
         ),
       ),
     );

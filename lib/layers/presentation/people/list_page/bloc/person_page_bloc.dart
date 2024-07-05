@@ -21,7 +21,7 @@ class PersonPageBloc extends Bloc<PersonPageEvent, PersonPageState> {
         super(const PersonPageState()) {
     on<FetchNextPageEvent>(
       _fetchNextPage,
-      transformer: throttleDroppable(const Duration(milliseconds: 10000)),
+      transformer: throttleDroppable(const Duration(milliseconds: 100)),
     );
   }
 

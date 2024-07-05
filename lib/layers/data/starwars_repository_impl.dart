@@ -20,6 +20,7 @@ class StarwarsRepositoryImpl implements StarwarsRepository {
 
   @override
   Future<List<Person>> getPeople({int page = 0}) async {
+    print('Getting people from page $page');
     final cachedList = _localStorage.loadPeoplePage(page: page);
     if (cachedList.isNotEmpty) {
       return cachedList;

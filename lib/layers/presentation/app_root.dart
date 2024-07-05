@@ -91,19 +91,24 @@ class _AppRootState extends State<AppRoot> {
                   },
                   icon: const Icon(Icons.light_mode),
                 ),
-                PopupMenuButton<StateManagementOptions>(
-                  onSelected: (value) => setState(() {
-                    _currentOption = value;
-                  }),
-                  itemBuilder: (context) => [
-                    _menuEntry(StateManagementOptions.bloc, 'Bloc'),
-                  ],
-                ),
+                // PopupMenuButton<StateManagementOptions>(
+                //   onSelected: (value) => setState(() {
+                //     _currentOption = value;
+                //   }),
+                //   itemBuilder: (context) => [
+                //     _menuEntry(StateManagementOptions.bloc, 'Bloc'),
+                //   ],
+                // ),
               ],
             ),
-            body: _getAppUsing(stateManagement: _currentOption)
-                .animate()
-                .fadeIn(delay: 1.2.seconds, duration: .7.seconds),
+            body: AppUsingBloc(
+              getAllPeople: _getAllPeople,
+              getAllFilms: _getAllFilms,
+              getAllPlanets: _getAllPlanets,
+              getAllSpecies: _getAllSpecies,
+              getAllStarships: _getAllStarships,
+              getAllVehicles: _getAllVehicles,
+            ).animate().fadeIn(delay: 1.2.seconds, duration: .7.seconds),
           );
         },
       ),
@@ -114,35 +119,26 @@ class _AppRootState extends State<AppRoot> {
   // _Helpers
   // ---------------------------------------------------------------------------
 
-  Widget _getAppUsing({required StateManagementOptions stateManagement}) {
-    switch (stateManagement) {
-      case (StateManagementOptions.bloc):
-        return AppUsingBloc(getAllPeople: _getAllPeople);
-      default:
-        return Container();
-    }
-  }
+  // PopupMenuItem<StateManagementOptions> _menuEntry(
+  //   StateManagementOptions option,
+  //   String text,
+  // ) {
+  //   final isSelected = _currentOption == option;
+  //   final textTheme = Theme.of(context)
+  //       .textTheme
+  //       .apply(displayColor: Theme.of(context).colorScheme.onSurface);
 
-  PopupMenuItem<StateManagementOptions> _menuEntry(
-    StateManagementOptions option,
-    String text,
-  ) {
-    final isSelected = _currentOption == option;
-    final textTheme = Theme.of(context)
-        .textTheme
-        .apply(displayColor: Theme.of(context).colorScheme.onSurface);
-
-    return PopupMenuItem<StateManagementOptions>(
-      value: option,
-      child: Text(
-        isSelected ? 'using $text' : 'use $text',
-        style: textTheme.bodyMedium!.copyWith(
-          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-          color: isSelected ? Colors.red : Colors.black,
-        ),
-      ),
-    );
-  }
+  //   return PopupMenuItem<StateManagementOptions>(
+  //     value: option,
+  //     child: Text(
+  //       isSelected ? 'using $text' : 'use $text',
+  //       style: textTheme.bodyMedium!.copyWith(
+  //         fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+  //         color: isSelected ? Colors.red : Colors.black,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   String getTitleToOption(StateManagementOptions option) {
     switch (option) {

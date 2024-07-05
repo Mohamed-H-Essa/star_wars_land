@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starwars/layers/domain/entity/person.dart';
-import 'package:starwars/layers/domain/usecase/get_all_people.dart';
-import 'package:starwars/layers/presentation/people/details_page/view/person_details_page.dart';
-import 'package:starwars/layers/presentation/people/list_page/bloc/person_page_bloc.dart';
-import 'package:starwars/layers/presentation/people/shared/person_list_item.dart';
+import 'package:starwars/layers/domain/entity/vehicle.dart';
+import 'package:starwars/layers/domain/usecase/get_all_vehicles.dart';
 import 'package:starwars/layers/presentation/shared/list_item_header.dart';
-
-import '../../../shared/list_item_loading.dart';
+import 'package:starwars/layers/presentation/shared/list_item_loading.dart';
+import 'package:starwars/layers/presentation/people/shared/person_list_item.dart';
+import 'package:starwars/layers/presentation/vehicles/details_page/view/vehicle_details_page.dart';
+import 'package:starwars/layers/presentation/vehicles/list_page/bloc/vehicle_page_bloc.dart';
+import 'package:starwars/layers/presentation/vehicles/shared/vehicle_list_item.dart';
 
 // -----------------------------------------------------------------------------
 // Page
 // -----------------------------------------------------------------------------
-class PersonPage extends StatelessWidget {
-  const PersonPage({super.key});
+class VehiclePage extends StatelessWidget {
+  const VehiclePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PersonPageBloc(
-        getAllPeople: context.read<GetAllPeople>(),
+      create: (context) => VehiclePageBloc(
+        getAllVehicle: context.read<GetAllVehicles>(),
       )..add(const FetchNextPageEvent()),
-      child: const PersonView(),
+      child: const VehicleView(),
     );
   }
 }
@@ -29,13 +29,13 @@ class PersonPage extends StatelessWidget {
 // -----------------------------------------------------------------------------
 // View
 // -----------------------------------------------------------------------------
-class PersonView extends StatelessWidget {
-  const PersonView({super.key});
+class VehicleView extends StatelessWidget {
+  const VehicleView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final status = context.select((PersonPageBloc b) => b.state.status);
-    return status == PersonPageStatus.initial
+    final status = context.select((VehiclePageBloc b) => b.state.status);
+    return status == VehiclePageStatus.initial
         ? const Center(child: CircularProgressIndicator())
         : const _Content();
   }
@@ -54,7 +54,7 @@ class _Content extends StatefulWidget {
 class __ContentState extends State<_Content> {
   final _scrollController = ScrollController();
 
-  PersonPageBloc get pageBloc => context.read<PersonPageBloc>();
+  VehiclePageBloc get pageBloc => context.read<VehiclePageBloc>();
 
   @override
   void initState() {
@@ -64,13 +64,13 @@ class __ContentState extends State<_Content> {
 
   @override
   Widget build(BuildContext ctx) {
-    final list = ctx.select((PersonPageBloc b) => b.state.people);
-    final hasEnded = ctx.select((PersonPageBloc b) => b.state.hasReachedEnd);
+    final list = ctx.select((VehiclePageBloc b) => b.state.vehicles);
+    final hasEnded = ctx.select((VehiclePageBloc b) => b.state.hasReachedEnd);
 
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
       child: ListView.builder(
-        key: const ValueKey('person_page_list_key'),
+        key: const ValueKey('vehicle_page_list_key'),
         controller: _scrollController,
         itemCount: hasEnded ? list.length : list.length + 1,
         itemBuilder: (context, index) {
@@ -81,18 +81,18 @@ class __ContentState extends State<_Content> {
           return index == 0
               ? Column(
                   children: [
-                    const ListItemHeader(titleText: 'All People'),
-                    PersonListItem(item: item, onTap: _goToDetails),
+                    const ListItemHeader(titleText: 'All Vehicle'),
+                    VehicleListItem(item: item, onTap: _goToDetails),
                   ],
                 )
-              : PersonListItem(item: item, onTap: _goToDetails);
+              : VehicleListItem(item: item, onTap: _goToDetails);
         },
       ),
     );
   }
 
-  void _goToDetails(Person person) {
-    final route = PersonDetailsPage.route(person: person);
+  void _goToDetails(Vehicle vehicle) {
+    final route = VehicleDetailsPage.route(vehicle: vehicle);
     Navigator.of(context).push(route);
   }
 

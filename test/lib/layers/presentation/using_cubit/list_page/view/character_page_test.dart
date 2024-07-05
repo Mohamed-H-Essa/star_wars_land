@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:starwars/layers/presentation/shared/person_list_item.dart';
+import 'package:starwars/layers/presentation/people/shared/person_list_item.dart';
 import 'package:starwars/layers/presentation/using_cubit/list_page/cubit/person_page_cubit.dart';
 import 'package:starwars/layers/presentation/using_cubit/list_page/view/person_page.dart';
 
