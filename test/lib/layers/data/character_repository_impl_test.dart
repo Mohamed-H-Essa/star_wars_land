@@ -11,14 +11,14 @@ class MockApi extends Mock implements Api {}
 class MockLocalStorage extends Mock implements LocalStorage {}
 
 void main() {
-  late CharacterRepositoryImpl characterRepository;
+  late StarwarsRepositoryImpl characterRepository;
   late MockApi mockApi;
   late MockLocalStorage mockLocalStorage;
 
   setUp(() {
     mockApi = MockApi();
     mockLocalStorage = MockLocalStorage();
-    characterRepository = CharacterRepositoryImpl(
+    characterRepository = StarwarsRepositoryImpl(
       api: mockApi,
       localStorage: mockLocalStorage,
     );

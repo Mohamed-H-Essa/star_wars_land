@@ -1,23 +1,23 @@
 // ignore_for_file: avoid_print
 
 import 'package:dio/dio.dart';
-import 'package:rickmorty/layers/data/dto/character_dto.dart';
+import 'package:rickmorty/layers/data/dto/person_dto.dart';
 
 abstract class Api {
-  Future<List<CharacterDto>> loadCharacters({int page = 0});
+  Future<List<PersonDto>> loadCharacters({int page = 0});
 }
 
 class ApiImpl implements Api {
   final dio = Dio();
 
   @override
-  Future<List<CharacterDto>> loadCharacters({int page = 0}) async {
+  Future<List<PersonDto>> loadCharacters({int page = 0}) async {
     try {
       final Response<Map<String, dynamic>> response = await dio
           .get('https://rickandmortyapi.com/api/character/?page=$page');
       print('page');
       final l = (response.data!['results'] as List<dynamic>)
-          .map((e) => CharacterDto.fromMap(e))
+          .map((e) => PersonDto.fromMap(e))
           .toList();
       return l;
     } on DioException catch (e) {

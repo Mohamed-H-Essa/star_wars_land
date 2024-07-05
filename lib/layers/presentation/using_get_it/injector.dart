@@ -22,7 +22,7 @@ Future<void> initializeGetIt() async {
   );
 
   getIt.registerFactory<CharacterRepository>(
-    () => CharacterRepositoryImpl(
+    () => StarwarsRepositoryImpl(
       api: getIt(),
       localStorage: getIt(),
     ),

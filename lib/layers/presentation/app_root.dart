@@ -41,7 +41,7 @@ class _AppRootState extends State<AppRoot> {
     //
     final api = ApiImpl();
     final localStorage = LocalStorageImpl(sharedPreferences: sharedPref);
-    final repo = CharacterRepositoryImpl(api: api, localStorage: localStorage);
+    final repo = StarwarsRepositoryImpl(api: api, localStorage: localStorage);
 
     _getAllCharacters = GetAllPeople(repository: repo);
   }

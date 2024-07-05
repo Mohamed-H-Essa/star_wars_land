@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:rickmorty/layers/domain/entity/people.dart';
+import 'package:rickmorty/layers/domain/entity/person.dart';
 import 'package:rickmorty/layers/presentation/using_mobx/details_page/store/character_details_page_store.dart';
 
 // -----------------------------------------------------------------------------

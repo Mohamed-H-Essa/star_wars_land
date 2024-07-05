@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rickmorty/layers/domain/entity/people.dart';
+import 'package:rickmorty/layers/domain/entity/person.dart';
 import 'package:rickmorty/layers/presentation/using_bloc/details_page/bloc/character_details_bloc.dart';
 
 void main() {

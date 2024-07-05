@@ -1,14 +1,14 @@
-import 'package:rickmorty/layers/data/dto/character_dto.dart';
+import 'package:rickmorty/layers/data/dto/person_dto.dart';
 import 'package:rickmorty/layers/data/dto/location_dto.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('CharacterDto', () {
     late String referenceRawJson;
-    late CharacterDto referenceDto;
+    late PersonDto referenceDto;
 
     setUp(() {
-      referenceDto = CharacterDto(
+      referenceDto = PersonDto(
         id: 1,
         name: 'Rick Sanchez',
         status: 'Alive',
@@ -30,7 +30,7 @@ void main() {
     });
 
     test('should create CharacterDto instance to/from JSON', () {
-      final createdDto = CharacterDto.fromRawJson(referenceRawJson);
+      final createdDto = PersonDto.fromRawJson(referenceRawJson);
       final json = createdDto.toRawJson();
       expect(createdDto, referenceDto);
       expect(json, referenceRawJson);

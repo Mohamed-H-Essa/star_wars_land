@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:rickmorty/layers/domain/entity/people.dart';
+import 'package:rickmorty/layers/domain/entity/person.dart';
 
 part 'character_details_page_store.g.dart';
 

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:rickmorty/layers/domain/entity/people.dart';
+import 'package:rickmorty/layers/domain/entity/person.dart';
 
 part 'character_details_event.dart';
 

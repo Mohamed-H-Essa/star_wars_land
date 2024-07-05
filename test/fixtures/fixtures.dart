@@ -1,7 +1,7 @@
-import 'package:rickmorty/layers/data/dto/character_dto.dart';
+import 'package:rickmorty/layers/data/dto/person_dto.dart';
 import 'package:rickmorty/layers/data/dto/location_dto.dart';
 
-final characterDto = CharacterDto(
+final characterDto = PersonDto(
   id: 1,
   name: 'Rick Sanchez',
   status: 'Alive',
@@ -17,7 +17,7 @@ final characterDto = CharacterDto(
 );
 
 final characterList1 = [
-  CharacterDto(
+  PersonDto(
     id: 1,
     name: 'Rick Sanchez',
     status: 'Alive',
@@ -31,7 +31,7 @@ final characterList1 = [
     url: 'https://example.com/character/1',
     created: DateTime.parse('2022-01-01T12:00:00Z'),
   ),
-  CharacterDto(
+  PersonDto(
     id: 2,
     name: 'Morty Smith',
     status: 'Alive',
@@ -48,7 +48,7 @@ final characterList1 = [
 ];
 
 final characterList2 = [
-  CharacterDto(
+  PersonDto(
     id: 3,
     name: 'Summer Smith',
     status: 'Alive',
@@ -62,7 +62,7 @@ final characterList2 = [
     url: 'https://example.com/character/3',
     created: DateTime.parse('2022-01-03T12:00:00Z'),
   ),
-  CharacterDto(
+  PersonDto(
     id: 4,
     name: 'Jerry Smith',
     status: 'Alive',

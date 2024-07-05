@@ -1,4 +1,4 @@
-import 'package:rickmorty/layers/domain/entity/people.dart';
+import 'package:rickmorty/layers/domain/entity/person.dart';
 import 'package:rickmorty/layers/presentation/using_cubit/list_page/cubit/character_page_cubit.dart';
 import 'package:test/test.dart';
 

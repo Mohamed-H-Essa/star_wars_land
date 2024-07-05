@@ -1,4 +1,4 @@
-import 'package:rickmorty/layers/domain/entity/people.dart';
+import 'package:rickmorty/layers/domain/entity/person.dart';
 import 'package:test/test.dart';
 
 void main() {

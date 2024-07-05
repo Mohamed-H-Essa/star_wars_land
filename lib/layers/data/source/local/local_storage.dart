@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:rickmorty/layers/data/dto/character_dto.dart';
+import 'package:rickmorty/layers/data/dto/person_dto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const cachedCharacterListKey = 'CACHED_CHARACTER_LIST_PAGE';
@@ -7,10 +7,10 @@ const cachedCharacterListKey = 'CACHED_CHARACTER_LIST_PAGE';
 abstract class LocalStorage {
   Future<bool> saveCharactersPage({
     required int page,
-    required List<CharacterDto> list,
+    required List<PersonDto> list,
   });
 
-  List<CharacterDto> loadCharactersPage({required int page});
+  List<PersonDto> loadCharactersPage({required int page});
 }
 
 class LocalStorageImpl implements LocalStorage {
@@ -21,19 +21,19 @@ class LocalStorageImpl implements LocalStorage {
   }) : _sharedPref = sharedPreferences;
 
   @override
-  List<CharacterDto> loadCharactersPage({required int page}) {
+  List<PersonDto> loadCharactersPage({required int page}) {
     final key = getKeyToPage(page);
     final jsonList = _sharedPref.getStringList(key);
 
     return jsonList != null
-        ? jsonList.map((e) => CharacterDto.fromRawJson(e)).toList()
+        ? jsonList.map((e) => PersonDto.fromRawJson(e)).toList()
         : [];
   }
 
   @override
   Future<bool> saveCharactersPage({
     required int page,
-    required List<CharacterDto> list,
+    required List<PersonDto> list,
   }) {
     final jsonList = list.map((e) => e.toRawJson()).toList();
     final key = getKeyToPage(page);

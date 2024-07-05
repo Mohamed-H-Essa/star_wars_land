@@ -14,7 +14,7 @@ import 'package:rickmorty/main.dart';
 // Domain
 // -----------------------------------------------------------------------------
 final characterRepositoryProvider = Provider<CharacterRepository>(
-  (ref) => CharacterRepositoryImpl(
+  (ref) => StarwarsRepositoryImpl(
     api: ref.read(apiProvider),
     localStorage: ref.read(localStorageProvider),
   ),
