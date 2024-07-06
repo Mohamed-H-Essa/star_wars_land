@@ -1,29 +1,29 @@
 part of 'specie_page_bloc.dart';
 
-enum StarshipPageStatus { initial, loading, success, failure }
+enum SpeciePageStatus { initial, loading, success, failure }
 
-class StarshipPageState extends Equatable {
-  const StarshipPageState({
-    this.status = StarshipPageStatus.initial,
-    this.starships = const [],
+class SpeciePageState extends Equatable {
+  const SpeciePageState({
+    this.status = SpeciePageStatus.initial,
+    this.species = const [],
     this.hasReachedEnd = false,
     this.currentPage = 1,
   });
 
-  final StarshipPageStatus status;
-  final List<Starship> starships;
+  final SpeciePageStatus status;
+  final List<Specie> species;
   final bool hasReachedEnd;
   final int currentPage;
 
-  StarshipPageState copyWith({
-    StarshipPageStatus? status,
-    List<Starship>? starships,
+  SpeciePageState copyWith({
+    SpeciePageStatus? status,
+    List<Specie>? species,
     bool? hasReachedEnd,
     int? currentPage,
   }) {
-    return StarshipPageState(
+    return SpeciePageState(
       status: status ?? this.status,
-      starships: starships ?? this.starships,
+      species: species ?? this.species,
       hasReachedEnd: hasReachedEnd ?? this.hasReachedEnd,
       currentPage: currentPage ?? this.currentPage,
     );
@@ -32,7 +32,7 @@ class StarshipPageState extends Equatable {
   @override
   List<Object> get props => [
         status,
-        starships,
+        species,
         hasReachedEnd,
         currentPage,
       ];

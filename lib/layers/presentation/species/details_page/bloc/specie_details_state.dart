@@ -1,10 +1,10 @@
 part of 'specie_details_bloc.dart';
 
-class StarshipDetailsState with EquatableMixin {
-  StarshipDetailsState({required this.starship});
+class SpecieDetailsState with EquatableMixin {
+  SpecieDetailsState({required this.specie});
 
-  final Starship starship;
+  final Specie specie;
 
   @override
-  List<Object?> get props => [starship];
+  List<Object?> get props => [specie];
 }

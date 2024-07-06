@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starwars/layers/domain/entity/starship.dart';
-import 'package:starwars/layers/domain/usecase/get_all_starships.dart';
+import 'package:starwars/layers/domain/entity/specie.dart';
+import 'package:starwars/layers/domain/usecase/get_all_species.dart';
 import 'package:starwars/layers/presentation/material_app.dart';
 import 'package:starwars/layers/presentation/shared/list_item_header.dart';
 import 'package:starwars/layers/presentation/shared/list_item_loading.dart';
-import 'package:starwars/layers/presentation/starships/details_page/view/starship_details_page.dart';
-import 'package:starwars/layers/presentation/starships/list_page/bloc/starship_page_bloc.dart';
-import 'package:starwars/layers/presentation/starships/shared/starship_list_item.dart';
+import 'package:starwars/layers/presentation/species/details_page/view/specie_details_page.dart';
+import 'package:starwars/layers/presentation/species/list_page/bloc/specie_page_bloc.dart';
+import 'package:starwars/layers/presentation/species/shared/specie_list_item.dart';
 
 // -----------------------------------------------------------------------------
 // Page
 // -----------------------------------------------------------------------------
-class StarshipPage extends StatelessWidget {
-  const StarshipPage({super.key});
+class SpeciePage extends StatelessWidget {
+  const SpeciePage({super.key});
 
   static Route<void> route() {
     return MaterialPageRoute(
       builder: (context) {
-        return const StarshipPage();
+        return const SpeciePage();
       },
     );
   }
@@ -26,12 +26,12 @@ class StarshipPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => StarshipPageBloc(
-        getAllStarship: context.read<GetAllStarships>(),
+      create: (context) => SpeciePageBloc(
+        getAllSpecie: context.read<GetAllSpecies>(),
       )..add(const FetchNextPageEvent()),
       child: Builder(
         builder: (context) {
-          return MaterialAppK(body: StarshipView());
+          return MaterialAppK(body: SpecieView());
         },
       ),
     );
@@ -41,13 +41,13 @@ class StarshipPage extends StatelessWidget {
 // -----------------------------------------------------------------------------
 // View
 // -----------------------------------------------------------------------------
-class StarshipView extends StatelessWidget {
-  const StarshipView({super.key});
+class SpecieView extends StatelessWidget {
+  const SpecieView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final status = context.select((StarshipPageBloc b) => b.state.status);
-    return status == StarshipPageStatus.initial
+    final status = context.select((SpeciePageBloc b) => b.state.status);
+    return status == SpeciePageStatus.initial
         ? const Center(child: CircularProgressIndicator())
         : const _Content();
   }
@@ -66,7 +66,7 @@ class _Content extends StatefulWidget {
 class __ContentState extends State<_Content> {
   final _scrollController = ScrollController();
 
-  StarshipPageBloc get pageBloc => context.read<StarshipPageBloc>();
+  SpeciePageBloc get pageBloc => context.read<SpeciePageBloc>();
 
   @override
   void initState() {
@@ -76,13 +76,13 @@ class __ContentState extends State<_Content> {
 
   @override
   Widget build(BuildContext ctx) {
-    final list = ctx.select((StarshipPageBloc b) => b.state.starships);
-    final hasEnded = ctx.select((StarshipPageBloc b) => b.state.hasReachedEnd);
+    final list = ctx.select((SpeciePageBloc b) => b.state.species);
+    final hasEnded = ctx.select((SpeciePageBloc b) => b.state.hasReachedEnd);
 
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
       child: ListView.builder(
-        key: const ValueKey('starship_page_list_key'),
+        key: const ValueKey('specie_page_list_key'),
         controller: _scrollController,
         itemCount: hasEnded ? list.length : list.length + 1,
         itemBuilder: (context, index) {
@@ -93,18 +93,18 @@ class __ContentState extends State<_Content> {
           return index == 0
               ? Column(
                   children: [
-                    const ListItemHeader(titleText: 'All Starships'),
-                    StarshipListItem(item: item, onTap: _goToDetails),
+                    const ListItemHeader(titleText: 'All Species'),
+                    SpecieListItem(item: item, onTap: _goToDetails),
                   ],
                 )
-              : StarshipListItem(item: item, onTap: _goToDetails);
+              : SpecieListItem(item: item, onTap: _goToDetails);
         },
       ),
     );
   }
 
-  void _goToDetails(Starship starship) {
-    final route = StarshipDetailsPage.route(starship: starship);
+  void _goToDetails(Specie specie) {
+    final route = SpecieDetailsPage.route(specie: specie);
     Navigator.of(context).push(route);
   }
 

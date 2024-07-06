@@ -94,6 +94,13 @@ class __ContentState extends State<_Content> {
                 ? Column(
                     children: [
                       const ListItemHeader(titleText: 'All People'),
+                      InputChip(
+                          label: Text(
+                        'hi',
+                        style: TextStyle(
+                          color: Colors.yellow,
+                        ),
+                      )),
                       PersonListItem(item: item, onTap: _goToDetails),
                     ],
                   )

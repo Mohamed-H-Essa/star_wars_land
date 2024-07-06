@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:starwars/layers/domain/entity/starship.dart';
+import 'package:starwars/layers/domain/entity/specie.dart';
 import 'package:starwars/layers/presentation/shared/services/vehicle_image_path.dart';
 
-typedef OnStarshipListItemTap = void Function(Starship person);
+typedef OnSpecieListItemTap = void Function(Specie person);
 
-class StarshipListItem extends StatelessWidget {
-  const StarshipListItem({
+class SpecieListItem extends StatelessWidget {
+  const SpecieListItem({
     super.key,
     required this.item,
     this.onTap,
   });
 
-  final Starship item;
-  final OnStarshipListItemTap? onTap;
+  final Specie item;
+  final OnSpecieListItemTap? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class StarshipListItem extends StatelessWidget {
 class _ItemDescription extends StatelessWidget {
   const _ItemDescription({super.key, required this.item});
 
-  final Starship item;
+  final Specie item;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class _ItemDescription extends StatelessWidget {
 class _ItemPhoto extends StatelessWidget {
   const _ItemPhoto({super.key, required this.item});
 
-  final Starship item;
+  final Specie item;
 
   @override
   Widget build(BuildContext context) {

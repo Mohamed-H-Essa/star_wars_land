@@ -1,12 +1,12 @@
 part of 'specie_page_bloc.dart';
 
-sealed class StarshipPageEvent extends Equatable {
-  const StarshipPageEvent();
+sealed class SpeciePageEvent extends Equatable {
+  const SpeciePageEvent();
 
   @override
   List<Object?> get props => [];
 }
 
-final class FetchNextPageEvent extends StarshipPageEvent {
+final class FetchNextPageEvent extends SpeciePageEvent {
   const FetchNextPageEvent();
 }

@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starwars/layers/domain/entity/starship.dart';
+import 'package:starwars/layers/domain/entity/specie.dart';
 import 'package:starwars/layers/presentation/shared/services/vehicle_image_path.dart';
-import 'package:starwars/layers/presentation/starships/details_page/bloc/starship_details_bloc.dart';
-import 'package:starwars/layers/presentation/shared/services/person_image_path.dart';
+import 'package:starwars/layers/presentation/species/details_page/bloc/specie_details_bloc.dart';
 
 // -----------------------------------------------------------------------------
 // Page
 // -----------------------------------------------------------------------------
-class StarshipDetailsPage extends StatelessWidget {
-  const StarshipDetailsPage({super.key});
+class SpecieDetailsPage extends StatelessWidget {
+  const SpecieDetailsPage({super.key});
 
-  static Route<void> route({required Starship starship}) {
+  static Route<void> route({required Specie specie}) {
     return MaterialPageRoute(
       builder: (context) {
         return BlocProvider(
-          create: (_) => StarshipDetailsBloc(starship: starship),
-          child: const StarshipDetailsPage(),
+          create: (_) => SpecieDetailsBloc(specie: specie),
+          child: const SpecieDetailsPage(),
         );
       },
     );
@@ -24,15 +23,15 @@ class StarshipDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const StarshipDetailsView();
+    return const SpecieDetailsView();
   }
 }
 
 // -----------------------------------------------------------------------------
 // View
 // -----------------------------------------------------------------------------
-class StarshipDetailsView extends StatelessWidget {
-  const StarshipDetailsView({super.key});
+class SpecieDetailsView extends StatelessWidget {
+  const SpecieDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,18 +59,18 @@ class _Content extends StatelessWidget {
     return SingleChildScrollView(
       child: Builder(
         builder: (ctx) {
-          final starship = ctx.select(
-            (StarshipDetailsBloc b) => b.state.starship,
+          final specie = ctx.select(
+            (SpecieDetailsBloc b) => b.state.specie,
           );
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Hero(
-                tag: starship.url ?? '',
+                tag: specie.url ?? '',
 
                 child: Image.asset(
-                    VehicleImageService.getImagePathFromUrl(starship.url!)),
+                    VehicleImageService.getImagePathFromUrl(specie.url!)),
                 // child: CachedNetworkImage(
                 //   imageUrl:
                 //       'https://artofthemovies.co.uk/cdn/shop/products/IMG_1250.jpg?v=1659794460',
@@ -87,7 +86,7 @@ class _Content extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        starship.name ?? '',
+                        specie.name ?? '',
                         style: textTheme.displaySmall!.copyWith(
                           color: colorScheme.onSurfaceVariant,
                           fontWeight: FontWeight.bold,
@@ -98,7 +97,7 @@ class _Content extends StatelessWidget {
                       const Divider(height: 1),
                       Builder(
                         builder: (ctx) {
-                          return _DetailsWidgetList(starship: starship);
+                          return _DetailsWidgetList(specie: specie);
                         },
                       ),
                     ],
@@ -118,9 +117,9 @@ class _Content extends StatelessWidget {
                 height: 80,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: starship.films?.length ?? 0,
+                  itemCount: specie.films?.length ?? 0,
                   itemBuilder: (context, index) {
-                    final ep = starship.films![index];
+                    final ep = specie.films![index];
                     return EpisodeItem(ep: ep);
                   },
                 ),
@@ -170,8 +169,8 @@ class EpisodeItem extends StatelessWidget {
 }
 
 class _DetailsWidgetList extends StatelessWidget {
-  const _DetailsWidgetList({super.key, required this.starship});
-  final Starship starship;
+  const _DetailsWidgetList({super.key, required this.specie});
+  final Specie specie;
 
   @override
   Widget build(BuildContext context) {
@@ -182,91 +181,70 @@ class _DetailsWidgetList extends StatelessWidget {
       children: [
         const SizedBox(height: 16),
         Text(
-          'Name: ${starship.name ?? ''}',
+          'Name: ${specie.name ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Model: ${starship.model ?? ''}',
+          'Classification: ${specie.classification ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Manufacturer: ${starship.manufacturer ?? ''}',
+          'Designation: ${specie.designation ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Cost in Credits: ${starship.costInCredits ?? ''}',
+          'Average Height: ${specie.averageHeight ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Length: ${starship.length ?? ''}',
+          'Skin Colors: ${specie.skinColors ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Max Atmosphering Speed: ${starship.maxAtmospheringSpeed ?? ''}',
+          'Hair Colors: ${specie.hairColors ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Crew: ${starship.crew ?? ''}',
+          'Eye Colors: ${specie.eyeColors ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Passengers: ${starship.passengers ?? ''}',
+          'Average Lifespan: ${specie.averageLifespan ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Cargo Capacity: ${starship.cargoCapacity ?? ''}',
+          'Homeworld: ${specie.homeworld ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Consumables: ${starship.consumables ?? ''}',
-          style: textTheme.bodyMedium!.copyWith(
-            color: colorScheme.onSurfaceVariant,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          'Hyperdrive Rating: ${starship.hyperdriveRating ?? ''}',
-          style: textTheme.bodyMedium!.copyWith(
-            color: colorScheme.onSurfaceVariant,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          'MGLT: ${starship.mglt ?? ''}',
-          style: textTheme.bodyMedium!.copyWith(
-            color: colorScheme.onSurfaceVariant,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          'Starship Class: ${starship.starshipClass ?? ''}',
+          'Language: ${specie.language ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
