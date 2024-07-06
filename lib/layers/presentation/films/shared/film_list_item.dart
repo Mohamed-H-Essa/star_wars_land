@@ -76,6 +76,21 @@ class _ItemDescription extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
+                Text(
+                  'Director: ' + (item.director ?? ''),
+                  style: textTheme.bodySmall!.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Release Date: ' + (item.releaseDate ?? ''),
+                  style: textTheme.bodySmall!.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
               ],
             ),
           ),

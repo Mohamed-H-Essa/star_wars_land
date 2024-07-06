@@ -87,38 +87,15 @@ class __ContentState extends State<_Content> {
             SearchField(onChanged: (v) {
               context.read<PersonPageBloc>().add(SearchInputPageEvent(v));
             }),
-            Expanded(
-              child: ListView.builder(
-                key: const ValueKey('person_page_list_key'),
-                controller: _scrollController,
-                itemCount: hasEnded ? list.length : list.length + 1,
-                itemBuilder: (context, index) {
-                  if (index >= list.length) {
-                    return !hasEnded && query.isEmpty
-                        ? const ListItemLoading()
-                        : const SizedBox();
-                  }
-                  final item = list[index];
-                  return index == 0
-                      ? Column(
-                          children: [
-                            const ListItemHeader(titleText: 'All People'),
-                            PersonListItem(item: item, onTap: _goToDetails),
-                          ],
-                        )
-                      : PersonListItem(item: item, onTap: _goToDetails);
-                },
-              ),
-            ),
+            ListContent(
+                scrollController: _scrollController,
+                hasEnded: hasEnded,
+                list: list,
+                query: query),
           ],
         ),
       ),
     );
-  }
-
-  void _goToDetails(Person person) {
-    final route = PersonDetailsPage.route(person: person);
-    Navigator.of(context).push(route);
   }
 
   @override
@@ -140,5 +117,55 @@ class __ContentState extends State<_Content> {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.offset;
     return currentScroll >= (maxScroll * 0.9);
+  }
+}
+
+class ListContent extends StatelessWidget {
+  const ListContent({
+    super.key,
+    required ScrollController scrollController,
+    required this.hasEnded,
+    required this.list,
+    required this.query,
+  }) : _scrollController = scrollController;
+
+  final ScrollController _scrollController;
+  final bool hasEnded;
+  final List<Person> list;
+  final String query;
+
+  @override
+  Widget build(BuildContext context) {
+    void _goToDetails(Person person) {
+      // Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+      //   return Scaffold();
+      // }));
+      final route = PersonDetailsPage.route(person: person);
+      Navigator.of(context).push(route);
+    }
+
+    return Expanded(
+      child: ListView.builder(
+        key: const ValueKey('person_page_list_key'),
+        controller: _scrollController,
+        itemCount: hasEnded ? list.length : list.length + 1,
+        itemBuilder: (context, index) {
+          if (index >= list.length) {
+            return !hasEnded && query.isEmpty
+                ? const ListItemLoading()
+                : const SizedBox();
+          }
+          final item = list[index];
+          return index == 0
+              ? Column(
+                  children: [
+                    const ListItemHeader(titleText: 'All People'),
+                    PersonListItem(item: item, onTap: _goToDetails),
+                  ],
+                )
+              : PersonListItem(item: item, onTap: _goToDetails);
+        },
+      ),
+    );
   }
 }

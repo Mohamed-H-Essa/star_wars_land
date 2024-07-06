@@ -8,14 +8,14 @@ class Film with EquatableMixin {
     this.edited,
     this.episodeId,
     this.openingCrawl,
-    this.planets,
+    // this.planets,
     this.producer,
     this.releaseDate,
-    this.species,
-    this.starships,
+    // this.species,
+    // this.starships,
     this.title,
     this.url,
-    this.vehicles,
+    // this.vehicles,
   });
 
   final List<String>? people;
@@ -24,14 +24,14 @@ class Film with EquatableMixin {
   final String? edited;
   final int? episodeId;
   final String? openingCrawl;
-  final List<String>? planets;
+  // final List<String>? planets;
   final String? producer;
   final String? releaseDate;
-  final List<String>? species;
-  final List<String>? starships;
+  // final List<String>? species;
+  // final List<String>? starships;
   final String? title;
   final String? url;
-  final List<String>? vehicles;
+  // final List<String>? vehicles;
 
   @override
   List<Object?> get props => [
@@ -41,13 +41,13 @@ class Film with EquatableMixin {
         edited,
         episodeId,
         openingCrawl,
-        planets,
+        // planets,
         producer,
         releaseDate,
-        species,
-        starships,
+        // species,
+        // starships,
         title,
         url,
-        vehicles,
+        // vehicles,
       ];
 }

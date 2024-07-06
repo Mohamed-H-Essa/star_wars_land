@@ -168,6 +168,26 @@ class _Content extends StatelessWidget {
                   },
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text(
+                  'Starships: ',
+                  style: textTheme.bodyLarge!.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 80,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: person.starships?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    final ep = person.starships![index];
+                    return EpisodeItem(ep: ep);
+                  },
+                ),
+              ),
             ],
           );
         },
@@ -188,14 +208,15 @@ class EpisodeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-    final name = ep.split('/').last;
+    final list = ep.split('/');
+    final name = list.length >= 2 ? list[list.length - 2] : list.last;
 
     return Padding(
       padding: const EdgeInsets.only(left: 12.0, top: 8),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(16)),
-          color: colorScheme.surfaceVariant,
+          color: colorScheme.surfaceVariant.withBlue(30),
         ),
         height: 80,
         width: 80,

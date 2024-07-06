@@ -64,6 +64,8 @@ class _Content extends StatelessWidget {
             (FilmDetailsBloc b) => b.state.film,
           );
 
+          print(film);
+
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -107,7 +109,7 @@ class _Content extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 16.0),
                 child: Text(
-                  'Episodes:',
+                  'People: ',
                   style: textTheme.bodyLarge!.copyWith(
                     color: colorScheme.onSurfaceVariant,
                   ),
@@ -119,6 +121,7 @@ class _Content extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: film.people?.length ?? 0,
                   itemBuilder: (context, index) {
+                    print("hiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
                     final ep = film.people![index];
                     return EpisodeItem(ep: ep);
                   },
@@ -144,7 +147,8 @@ class EpisodeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-    final name = ep.split('/').last;
+    final list = ep.split('/');
+    final name = list.length >= 2 ? list[list.length - 2] : list.last;
 
     return Padding(
       padding: const EdgeInsets.only(left: 12.0, top: 8),

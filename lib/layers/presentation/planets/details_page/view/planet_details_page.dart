@@ -145,7 +145,8 @@ class EpisodeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-    final name = ep.split('/').last;
+    final list = ep.split('/');
+    final name = list.length >= 2 ? list[list.length - 2] : list.last;
 
     return Padding(
       padding: const EdgeInsets.only(left: 12.0, top: 8),

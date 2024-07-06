@@ -94,11 +94,7 @@ void main() {
         director: 'George Lucas',
         producer: 'Gary Kurtz, Rick McCallum',
         releaseDate: '1977-05-25',
-        characters: ['https://swapi.dev/api/people/1/'],
-        planets: ['https://swapi.dev/api/planets/1/'],
-        starships: ['https://swapi.dev/api/starships/2/'],
-        vehicles: ['https://swapi.dev/api/vehicles/4/'],
-        species: ['https://swapi.dev/api/species/1/'],
+        people: ['https://swapi.dev/api/people/1/'],
         url: 'https://swapi.dev/api/films/1/',
       );
 
@@ -109,11 +105,7 @@ void main() {
         director: 'George Lucas',
         producer: 'Gary Kurtz, Rick McCallum',
         releaseDate: '1977-05-25',
-        characters: ['https://swapi.dev/api/people/1/'],
-        planets: ['https://swapi.dev/api/planets/1/'],
-        starships: ['https://swapi.dev/api/starships/2/'],
-        vehicles: ['https://swapi.dev/api/vehicles/4/'],
-        species: ['https://swapi.dev/api/species/1/'],
+        people: ['https://swapi.dev/api/people/1/'],
         url: 'https://swapi.dev/api/films/1/',
       );
 
@@ -128,11 +120,7 @@ void main() {
         director: 'George Lucas',
         producer: 'Gary Kurtz, Rick McCallum',
         releaseDate: '1977-05-25',
-        characters: ['https://swapi.dev/api/people/1/'],
-        planets: ['https://swapi.dev/api/planets/1/'],
-        starships: ['https://swapi.dev/api/starships/2/'],
-        vehicles: ['https://swapi.dev/api/vehicles/4/'],
-        species: ['https://swapi.dev/api/species/1/'],
+        people: ['https://swapi.dev/api/people/1/'],
         url: 'https://swapi.dev/api/films/1/',
       );
 
@@ -143,11 +131,7 @@ void main() {
         director: 'Irvin Kershner',
         producer: 'Gary Kurtz, Rick McCallum',
         releaseDate: '1980-05-21',
-        characters: ['https://swapi.dev/api/people/1/'],
-        planets: ['https://swapi.dev/api/planets/4/'],
-        starships: ['https://swapi.dev/api/starships/3/'],
-        vehicles: ['https://swapi.dev/api/vehicles/6/'],
-        species: ['https://swapi.dev/api/species/1/'],
+        people: ['https://swapi.dev/api/people/1/'],
         url: 'https://swapi.dev/api/films/2/',
       );
 
