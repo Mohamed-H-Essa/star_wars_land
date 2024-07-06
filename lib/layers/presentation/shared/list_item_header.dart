@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:starwars/layers/domain/entity/starship.dart';
 import 'package:starwars/layers/presentation/films/list_page/view/film_page.dart';
 import 'package:starwars/layers/presentation/people/list_page/view/person_page.dart';
 import 'package:starwars/layers/presentation/planets/list_page/view/planet_page.dart';
+import 'package:starwars/layers/presentation/starships/list_page/view/starship_page.dart';
 import 'package:starwars/layers/presentation/vehicles/list_page/view/vehicle_page.dart';
 
 class ListItemHeader extends StatelessWidget {
@@ -31,6 +33,9 @@ class ListItemHeader extends StatelessWidget {
         case 'All Films':
           Navigator.of(context).pushReplacement(FilmPage.route());
           break;
+        case 'All Starships':
+          Navigator.of(context).pushReplacement(StarshipPage.route());
+          break;
         default:
           Navigator.of(context).pushReplacement(PersonPage.route());
       }
@@ -48,6 +53,7 @@ class ListItemHeader extends StatelessWidget {
               _menuEntry('All Vehicles', titleText: titleText),
               _menuEntry('All Planets', titleText: titleText),
               _menuEntry('All Films', titleText: titleText),
+              _menuEntry('All Starships', titleText: titleText),
             ];
           },
           child: Card(

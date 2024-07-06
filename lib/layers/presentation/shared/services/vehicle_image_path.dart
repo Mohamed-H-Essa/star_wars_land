@@ -20,6 +20,7 @@ class VehicleImageService {
       id = parts[parts.length - 2];
     }
 
+    print(id);
     String imageName = '';
     switch (id) {
       case '4':
@@ -81,6 +82,38 @@ class VehicleImageService {
         break;
       case '42':
         imageName = 'Sith_speeder.jpg';
+        break;
+
+/////////////
+      case '2':
+        imageName = 'Sand_Crawler.jpg';
+        break;
+      case '12':
+        imageName = 'T-16_skyhopper.gif';
+        break;
+      case '11':
+        imageName = 'X_34_landspeeder.jpg';
+        break;
+      case '10':
+        imageName = 'TIE_LN_starfighter.jpg';
+        break;
+      case '9':
+        imageName = 'Snowspeeder.jpg';
+        break;
+      case '5':
+        imageName = 'TIE_bomber.jpg';
+        break;
+      case '3':
+        imageName = 'AT_AT.jpg';
+        break;
+      case '13':
+        imageName = 'AT_ST.jpg';
+        break;
+      case '15':
+        imageName = 'Storm_IV_Twin_Pod_cloud_car.jpg';
+        break;
+      case '17':
+        imageName = 'Sail_barge.jpg';
         break;
       default:
         imageName =
