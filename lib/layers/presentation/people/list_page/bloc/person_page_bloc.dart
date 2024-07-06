@@ -34,7 +34,7 @@ class PersonPageBloc extends Bloc<PersonPageEvent, PersonPageState> {
   final GetAllPeople _getAllPeople;
 
   Future<void> _fetchNextPage(event, Emitter<PersonPageState> emit) async {
-    if (state.hasReachedEnd) return;
+    if (state.hasReachedEnd || state.searchQuery != '') return;
 
     emit(state.copyWith(status: PersonPageStatus.loading));
 
@@ -43,7 +43,7 @@ class PersonPageBloc extends Bloc<PersonPageEvent, PersonPageState> {
     emit(
       state.copyWith(
         status: PersonPageStatus.success,
-        people: _searchPeople(List.of(state.people)..addAll(list), 'Luke'),
+        people: List.of(state.people)..addAll(list),
         hasReachedEnd: list.isEmpty,
         currentPage: state.currentPage + 1,
       ),
@@ -57,12 +57,11 @@ class PersonPageBloc extends Bloc<PersonPageEvent, PersonPageState> {
     emit(
       state.copyWith(
         searchQuery: event.query,
-        people: _searchPeople(state.people, event.query),
       ),
     );
   }
 
-  List<Person> _searchPeople(List<Person> people, String query) {
+  static List<Person> searchPeople(List<Person> people, String query) {
     final lowerCaseQuery = query.toLowerCase();
     return people.where((person) {
       final lowerCaseName = person.name.toString().toLowerCase();

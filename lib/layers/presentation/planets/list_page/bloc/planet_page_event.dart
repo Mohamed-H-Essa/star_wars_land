@@ -10,3 +10,8 @@ sealed class PlanetPageEvent extends Equatable {
 final class FetchNextPageEvent extends PlanetPageEvent {
   const FetchNextPageEvent();
 }
+
+final class SearchInputPageEvent extends PlanetPageEvent {
+  const SearchInputPageEvent(this.query);
+  final String query;
+}

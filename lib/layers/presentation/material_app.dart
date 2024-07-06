@@ -29,7 +29,7 @@ class _MaterialAppKState extends State<MaterialAppK> {
           final tt = Theme.of(context).textTheme;
           final cs = Theme.of(context).colorScheme;
           return Scaffold(
-            extendBodyBehindAppBar: true,
+            // extendBodyBehindAppBar: true,
             appBar: AppBar(
               title: Transform.translate(
                 offset: const Offset(10, 0),

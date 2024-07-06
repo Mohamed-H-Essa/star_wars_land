@@ -10,3 +10,8 @@ sealed class FilmPageEvent extends Equatable {
 final class FetchNextPageEvent extends FilmPageEvent {
   const FetchNextPageEvent();
 }
+
+final class SearchInputPageEvent extends FilmPageEvent {
+  const SearchInputPageEvent(this.query);
+  final String query;
+}

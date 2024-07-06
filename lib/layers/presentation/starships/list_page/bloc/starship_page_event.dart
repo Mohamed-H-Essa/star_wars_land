@@ -10,3 +10,8 @@ sealed class StarshipPageEvent extends Equatable {
 final class FetchNextPageEvent extends StarshipPageEvent {
   const FetchNextPageEvent();
 }
+
+final class SearchInputPageEvent extends StarshipPageEvent {
+  const SearchInputPageEvent(this.query);
+  final String query;
+}

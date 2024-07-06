@@ -10,3 +10,8 @@ sealed class SpeciePageEvent extends Equatable {
 final class FetchNextPageEvent extends SpeciePageEvent {
   const FetchNextPageEvent();
 }
+
+final class SearchInputPageEvent extends SpeciePageEvent {
+  const SearchInputPageEvent(this.query);
+  final String query;
+}
