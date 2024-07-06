@@ -1,44 +1,7 @@
 # Flutter - Starwars land Clean Architecture with State Management :BLoC
 
 ![Build Status](https://github.com/guilherme-v/flutter-clean-architecture-example/actions/workflows/main.yaml/badge.svg)
-
----
-
-## Goals
-
-- Keep code clean
-- Keep code testable
-- Keep code base easily extensible and adaptable
-- Ensure State Management Transparency: Design the codebase to treat the chosen state management solution as an implementation detail, enabling seamless exploration and later replacement with minimal project impact.
-
-## Additional features
-
-- Material 3 theming support (Dark and Light)
-- Widget and Unit Tests (good when comparing different state management libraries)
-- Infinite scrolling
-- Remote API call and Caching
-- Small set of customized static analysis and lint rules
-
-## Exploration Summary
-
-An overview of the current state management libraries explored is presented below:
-
-| State Manager | Applied | Unit tests | Widget tests |
-| ------------- | ------- | :--------: | ------------ |
-| Provider      | Yes     |    Yes     | Yes          |
-| Riverpod      | Yes     |    Yes     | In Progress  |
-| Bloc          | Yes     |    Yes     | Yes          |
-| Cubit         | Yes     |    Yes     | Yes          |
-| GetIt         | Yes     |    Yes     | Yes          |
-| MobX          | Yes     |    Yes     | In Progress  |
-
-## Tip
-
-Don't just apply the architecture blindly. Work wisely by using the appropriate levels of abstraction for each project. In the end, this architecture is just a collection of good ideas based on well-founded principles (like Separation of concerns). Seek to understand the problem that each architectural decision aims to solve, so you can determine when and how to apply it.
-
-**THINK** first, then **ACT**.
-
-## A short description about "Clean Architecture"
+## A short description about "Clean Architecture" ( credit: Silva.guilherme)
 
 ![architecture](./art/arch_1.png?raw=true)
 
