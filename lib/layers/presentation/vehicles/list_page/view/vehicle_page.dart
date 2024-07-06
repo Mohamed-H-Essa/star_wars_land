@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:starwars/layers/data/starwars_repository_impl.dart';
 import 'package:starwars/layers/domain/entity/vehicle.dart';
+import 'package:starwars/layers/domain/repository/starwars_repository.dart';
 import 'package:starwars/layers/domain/usecase/get_all_vehicles.dart';
 import 'package:starwars/layers/presentation/shared/list_item_header.dart';
 import 'package:starwars/layers/presentation/shared/list_item_loading.dart';
@@ -15,13 +17,25 @@ import 'package:starwars/layers/presentation/vehicles/shared/vehicle_list_item.d
 class VehiclePage extends StatelessWidget {
   const VehiclePage({super.key});
 
+  static Route<void> route(BuildContext context) {
+    return MaterialPageRoute(
+      builder: (context) {
+        return const VehiclePage();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => VehiclePageBloc(
         getAllVehicle: context.read<GetAllVehicles>(),
       )..add(const FetchNextPageEvent()),
-      child: const VehicleView(),
+      child: Builder(
+        builder: (context) {
+          return VehicleView();
+        },
+      ),
     );
   }
 }
@@ -32,8 +46,29 @@ class VehiclePage extends StatelessWidget {
 class VehicleView extends StatelessWidget {
   const VehicleView({super.key});
 
+  // static Route<void> route() {
+  //   return MaterialPageRoute(
+  //     builder: (context) {
+  //       return const VehicleView();
+  //     },
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
+    // return Scaffold(
+    //   body: SizedBox(
+    //     child: Container(
+    //       color: Colors.white,
+    //       width: 100,
+    //       height: 100,
+    //     ),
+    //   ),
+    // );
+    print("I'm in view nowww");
+    print(context.read<GetAllVehicles>());
+    print(context.read<VehiclePageBloc>());
+
     final status = context.select((VehiclePageBloc b) => b.state.status);
     return status == VehiclePageStatus.initial
         ? const Center(child: CircularProgressIndicator())

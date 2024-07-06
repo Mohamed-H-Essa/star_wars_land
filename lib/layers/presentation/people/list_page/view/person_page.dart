@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starwars/layers/domain/entity/person.dart';
 import 'package:starwars/layers/domain/usecase/get_all_people.dart';
+import 'package:starwars/layers/domain/usecase/get_all_vehicles.dart';
 import 'package:starwars/layers/presentation/people/details_page/view/person_details_page.dart';
 import 'package:starwars/layers/presentation/people/list_page/bloc/person_page_bloc.dart';
 import 'package:starwars/layers/presentation/people/shared/person_list_item.dart';
 import 'package:starwars/layers/presentation/shared/list_item_header.dart';
+import 'package:starwars/layers/presentation/vehicles/list_page/view/vehicle_page.dart';
 
 import '../../../shared/list_item_loading.dart';
 
@@ -14,6 +16,14 @@ import '../../../shared/list_item_loading.dart';
 // -----------------------------------------------------------------------------
 class PersonPage extends StatelessWidget {
   const PersonPage({super.key});
+
+  static Route<void> route() {
+    return MaterialPageRoute(
+      builder: (context) {
+        return const PersonPage();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +91,15 @@ class __ContentState extends State<_Content> {
           return index == 0
               ? Column(
                   children: [
+                    TextButton(
+                        onPressed: () async {
+                          final res =
+                              await context.read<GetAllVehicles>().call();
+                          print(res);
+                          Navigator.of(context)
+                              .push<void>(VehiclePage.route(context));
+                        },
+                        child: Text('from person page nav')),
                     const ListItemHeader(titleText: 'All People'),
                     PersonListItem(item: item, onTap: _goToDetails),
                   ],
