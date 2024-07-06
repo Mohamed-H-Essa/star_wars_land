@@ -1,4 +1,4 @@
-# Flutter - Starwars land Clean Architecture with State Management :BLoC (The app saves the data offline)
+# Flutter - Starwars land in Clean Architecture with BLoC
 
 
 ![Build Status](https://github.com/guilherme-v/flutter-clean-architecture-example/actions/workflows/main.yaml/badge.svg)
