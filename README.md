@@ -1,8 +1,7 @@
-# Flutter - Clean Architecture with State Management comparison
+# Flutter - Starwars land Clean Architecture with State Management :BLoC
 
 ![Build Status](https://github.com/guilherme-v/flutter-clean-architecture-example/actions/workflows/main.yaml/badge.svg)
 
-![app](./art/app.png?raw=true)
 
 ## 👀 Seeking New Opportunities - Open to Work 👋
 
