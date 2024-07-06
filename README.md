@@ -14,6 +14,7 @@
       of the popular series Starwars
 - Save data offline (after closing the app and when there is no internet connection you can still browse and see loaded -cached- data)
 - Search (You can search the titles in real time in any of the above categories
+- Lightmode & Darkmode
 
 ## How the app is divided:
 ![screenshot-20240706-210919Z-selected](https://github.com/mhosnyessa/star_wars_land/assets/65831561/5fb19e83-eef9-459b-a5e9-bdc2d66f2996)
