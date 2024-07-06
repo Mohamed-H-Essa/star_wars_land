@@ -61,7 +61,7 @@ class FilmPageBloc extends Bloc<FilmPageEvent, FilmPageState> {
     );
   }
 
-  static List<Film> searchPeople(List<Film> people, String query) {
+  static List<Film> searchFilm(List<Film> people, String query) {
     final lowerCaseQuery = query.toLowerCase();
     return people.where((film) {
       final lowerCaseName = film.title.toString().toLowerCase();

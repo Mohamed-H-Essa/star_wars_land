@@ -61,7 +61,7 @@ class StarshipPageBloc extends Bloc<StarshipPageEvent, StarshipPageState> {
     );
   }
 
-  static List<Starship> searchPeople(List<Starship> people, String query) {
+  static List<Starship> searchStarship(List<Starship> people, String query) {
     final lowerCaseQuery = query.toLowerCase();
     return people.where((film) {
       final lowerCaseName = film.name.toString().toLowerCase();

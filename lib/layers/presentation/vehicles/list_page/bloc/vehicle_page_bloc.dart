@@ -61,7 +61,7 @@ class VehiclePageBloc extends Bloc<VehiclePageEvent, VehiclePageState> {
     );
   }
 
-  static List<Vehicle> searchPeople(List<Vehicle> people, String query) {
+  static List<Vehicle> searchVehicle(List<Vehicle> people, String query) {
     final lowerCaseQuery = query.toLowerCase();
     return people.where((film) {
       final lowerCaseName = film.name.toString().toLowerCase();

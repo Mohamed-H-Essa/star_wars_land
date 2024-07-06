@@ -61,7 +61,7 @@ class PlanetPageBloc extends Bloc<PlanetPageEvent, PlanetPageState> {
     );
   }
 
-  static List<Planet> searchPeople(List<Planet> people, String query) {
+  static List<Planet> searchPlanet(List<Planet> people, String query) {
     final lowerCaseQuery = query.toLowerCase();
     return people.where((film) {
       final lowerCaseName = film.name.toString().toLowerCase();

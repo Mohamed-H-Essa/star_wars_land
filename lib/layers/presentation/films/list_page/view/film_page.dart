@@ -8,6 +8,7 @@ import 'package:starwars/layers/presentation/shared/list_item_loading.dart';
 import 'package:starwars/layers/presentation/films/details_page/view/film_details_page.dart';
 import 'package:starwars/layers/presentation/films/list_page/bloc/film_page_bloc.dart';
 import 'package:starwars/layers/presentation/films/shared/film_list_item.dart';
+import 'package:starwars/layers/presentation/shared/presentation/search_field.dart';
 
 // -----------------------------------------------------------------------------
 // Page
@@ -76,29 +77,42 @@ class __ContentState extends State<_Content> {
 
   @override
   Widget build(BuildContext ctx) {
-    final list = ctx.select((FilmPageBloc b) => b.state.films);
+    final l = ctx.select((FilmPageBloc b) => b.state.films);
+    final query = ctx.select((FilmPageBloc b) => b.state.searchQuery);
+    final list = FilmPageBloc.searchFilm(l, query);
     final hasEnded = ctx.select((FilmPageBloc b) => b.state.hasReachedEnd);
 
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
-      child: ListView.builder(
-        key: const ValueKey('film_page_list_key'),
-        controller: _scrollController,
-        itemCount: hasEnded ? list.length : list.length + 1,
-        itemBuilder: (context, index) {
-          if (index >= list.length) {
-            return !hasEnded ? const ListItemLoading() : const SizedBox();
-          }
-          final item = list[index];
-          return index == 0
-              ? Column(
-                  children: [
-                    const ListItemHeader(titleText: 'All Films'),
-                    FilmListItem(item: item, onTap: _goToDetails),
-                  ],
-                )
-              : FilmListItem(item: item, onTap: _goToDetails);
-        },
+      child: Column(
+        children: [
+          SearchField(onChanged: (v) {
+            context.read<FilmPageBloc>().add(SearchInputPageEvent(v));
+          }),
+          Expanded(
+            child: ListView.builder(
+              key: const ValueKey('film_page_list_key'),
+              controller: _scrollController,
+              itemCount: hasEnded ? list.length : list.length + 1,
+              itemBuilder: (context, index) {
+                if (index >= list.length) {
+                  return !hasEnded && query.isEmpty
+                      ? const ListItemLoading()
+                      : const SizedBox();
+                }
+                final item = list[index];
+                return index == 0
+                    ? Column(
+                        children: [
+                          const ListItemHeader(titleText: 'All Films'),
+                          FilmListItem(item: item, onTap: _goToDetails),
+                        ],
+                      )
+                    : FilmListItem(item: item, onTap: _goToDetails);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:starwars/layers/domain/usecase/get_all_vehicles.dart';
 import 'package:starwars/layers/presentation/material_app.dart';
 import 'package:starwars/layers/presentation/shared/list_item_header.dart';
 import 'package:starwars/layers/presentation/shared/list_item_loading.dart';
+import 'package:starwars/layers/presentation/shared/presentation/search_field.dart';
 import 'package:starwars/layers/presentation/vehicles/details_page/view/vehicle_details_page.dart';
 import 'package:starwars/layers/presentation/vehicles/list_page/bloc/vehicle_page_bloc.dart';
 import 'package:starwars/layers/presentation/vehicles/shared/vehicle_list_item.dart';
@@ -76,29 +77,42 @@ class __ContentState extends State<_Content> {
 
   @override
   Widget build(BuildContext ctx) {
-    final list = ctx.select((VehiclePageBloc b) => b.state.vehicles);
+    final l = ctx.select((VehiclePageBloc b) => b.state.vehicles);
+    final query = ctx.select((VehiclePageBloc b) => b.state.searchQuery);
+    final list = VehiclePageBloc.searchVehicle(l, query);
     final hasEnded = ctx.select((VehiclePageBloc b) => b.state.hasReachedEnd);
 
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
-      child: ListView.builder(
-        key: const ValueKey('vehicle_page_list_key'),
-        controller: _scrollController,
-        itemCount: hasEnded ? list.length : list.length + 1,
-        itemBuilder: (context, index) {
-          if (index >= list.length) {
-            return !hasEnded ? const ListItemLoading() : const SizedBox();
-          }
-          final item = list[index];
-          return index == 0
-              ? Column(
-                  children: [
-                    const ListItemHeader(titleText: 'All Vehicles'),
-                    VehicleListItem(item: item, onTap: _goToDetails),
-                  ],
-                )
-              : VehicleListItem(item: item, onTap: _goToDetails);
-        },
+      child: Column(
+        children: [
+          SearchField(onChanged: (v) {
+            context.read<VehiclePageBloc>().add(SearchInputPageEvent(v));
+          }),
+          Expanded(
+            child: ListView.builder(
+              key: const ValueKey('vehicle_page_list_key'),
+              controller: _scrollController,
+              itemCount: hasEnded ? list.length : list.length + 1,
+              itemBuilder: (context, index) {
+                if (index >= list.length) {
+                  return !hasEnded && query.isEmpty
+                      ? const ListItemLoading()
+                      : const SizedBox();
+                }
+                final item = list[index];
+                return index == 0
+                    ? Column(
+                        children: [
+                          const ListItemHeader(titleText: 'All Vehicles'),
+                          VehicleListItem(item: item, onTap: _goToDetails),
+                        ],
+                      )
+                    : VehicleListItem(item: item, onTap: _goToDetails);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

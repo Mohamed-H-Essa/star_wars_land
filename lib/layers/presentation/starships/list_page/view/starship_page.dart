@@ -5,6 +5,7 @@ import 'package:starwars/layers/domain/usecase/get_all_starships.dart';
 import 'package:starwars/layers/presentation/material_app.dart';
 import 'package:starwars/layers/presentation/shared/list_item_header.dart';
 import 'package:starwars/layers/presentation/shared/list_item_loading.dart';
+import 'package:starwars/layers/presentation/shared/presentation/search_field.dart';
 import 'package:starwars/layers/presentation/starships/details_page/view/starship_details_page.dart';
 import 'package:starwars/layers/presentation/starships/list_page/bloc/starship_page_bloc.dart';
 import 'package:starwars/layers/presentation/starships/shared/starship_list_item.dart';
@@ -76,29 +77,42 @@ class __ContentState extends State<_Content> {
 
   @override
   Widget build(BuildContext ctx) {
-    final list = ctx.select((StarshipPageBloc b) => b.state.starships);
+    final l = ctx.select((StarshipPageBloc b) => b.state.starships);
+    final query = ctx.select((StarshipPageBloc b) => b.state.searchQuery);
+    final list = StarshipPageBloc.searchStarship(l, query);
     final hasEnded = ctx.select((StarshipPageBloc b) => b.state.hasReachedEnd);
 
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
-      child: ListView.builder(
-        key: const ValueKey('starship_page_list_key'),
-        controller: _scrollController,
-        itemCount: hasEnded ? list.length : list.length + 1,
-        itemBuilder: (context, index) {
-          if (index >= list.length) {
-            return !hasEnded ? const ListItemLoading() : const SizedBox();
-          }
-          final item = list[index];
-          return index == 0
-              ? Column(
-                  children: [
-                    const ListItemHeader(titleText: 'All Starships'),
-                    StarshipListItem(item: item, onTap: _goToDetails),
-                  ],
-                )
-              : StarshipListItem(item: item, onTap: _goToDetails);
-        },
+      child: Column(
+        children: [
+          SearchField(onChanged: (v) {
+            context.read<StarshipPageBloc>().add(SearchInputPageEvent(v));
+          }),
+          Expanded(
+            child: ListView.builder(
+              key: const ValueKey('starship_page_list_key'),
+              controller: _scrollController,
+              itemCount: hasEnded ? list.length : list.length + 1,
+              itemBuilder: (context, index) {
+                if (index >= list.length) {
+                  return !hasEnded && query.isEmpty
+                      ? const ListItemLoading()
+                      : const SizedBox();
+                }
+                final item = list[index];
+                return index == 0
+                    ? Column(
+                        children: [
+                          const ListItemHeader(titleText: 'All Starships'),
+                          StarshipListItem(item: item, onTap: _goToDetails),
+                        ],
+                      )
+                    : StarshipListItem(item: item, onTap: _goToDetails);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -61,7 +61,7 @@ class SpeciePageBloc extends Bloc<SpeciePageEvent, SpeciePageState> {
     );
   }
 
-  static List<Specie> searchPeople(List<Specie> people, String query) {
+  static List<Specie> searchSpecie(List<Specie> people, String query) {
     final lowerCaseQuery = query.toLowerCase();
     return people.where((film) {
       final lowerCaseName = film.name.toString().toLowerCase();
