@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starwars/layers/domain/entity/film.dart';
+import 'package:starwars/layers/domain/entity/starship.dart';
 import 'package:starwars/layers/domain/usecase/get_all_starships.dart';
 import 'package:starwars/layers/presentation/material_app.dart';
 import 'package:starwars/layers/presentation/shared/list_item_header.dart';
 import 'package:starwars/layers/presentation/shared/list_item_loading.dart';
-import 'package:starwars/layers/presentation/starships/details_page/view/film_details_page.dart';
-import 'package:starwars/layers/presentation/starships/list_page/bloc/film_page_bloc.dart';
-import 'package:starwars/layers/presentation/starships/shared/film_list_item.dart';
+import 'package:starwars/layers/presentation/starships/details_page/view/starship_details_page.dart';
+import 'package:starwars/layers/presentation/starships/list_page/bloc/starship_page_bloc.dart';
+import 'package:starwars/layers/presentation/starships/shared/starship_list_item.dart';
 
 // -----------------------------------------------------------------------------
 // Page
@@ -82,7 +82,7 @@ class __ContentState extends State<_Content> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
       child: ListView.builder(
-        key: const ValueKey('film_page_list_key'),
+        key: const ValueKey('starship_page_list_key'),
         controller: _scrollController,
         itemCount: hasEnded ? list.length : list.length + 1,
         itemBuilder: (context, index) {
@@ -103,8 +103,8 @@ class __ContentState extends State<_Content> {
     );
   }
 
-  void _goToDetails(Starship film) {
-    final route = StarshipDetailsPage.route(film: film);
+  void _goToDetails(Starship starship) {
+    final route = StarshipDetailsPage.route(starship: starship);
     Navigator.of(context).push(route);
   }
 

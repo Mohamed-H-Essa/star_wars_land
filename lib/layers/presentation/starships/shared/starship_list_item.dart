@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starwars/layers/domain/entity/film.dart';
-import 'package:starwars/layers/presentation/shared/services/film_image_path.dart';
+import 'package:starwars/layers/domain/entity/starship.dart';
+import 'package:starwars/layers/presentation/shared/services/vehicle_image_path.dart';
 
 typedef OnStarshipListItemTap = void Function(Starship person);
 
@@ -69,7 +69,7 @@ class _ItemDescription extends StatelessWidget {
               children: [
                 const SizedBox(height: 4),
                 Text(
-                  item.title ?? '',
+                  item.name ?? '',
                   style: textTheme.bodyMedium!.copyWith(
                     color: colorScheme.onSurfaceVariant,
                     fontWeight: FontWeight.bold,
@@ -99,8 +99,8 @@ class _ItemPhoto extends StatelessWidget {
         child: Hero(
           tag: item.url ?? '',
           child: Image.asset(
-            StarshipImageService.getImagePath(
-              item.title!,
+            VehicleImageService.getImagePathFromUrl(
+              item.url!,
             ),
             fit: BoxFit.cover,
             // width: 170,

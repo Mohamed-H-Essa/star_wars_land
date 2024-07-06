@@ -1,4 +1,4 @@
-part of 'film_page_bloc.dart';
+part of 'starship_page_bloc.dart';
 
 sealed class StarshipPageEvent extends Equatable {
   const StarshipPageEvent();

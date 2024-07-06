@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
-import 'package:starwars/layers/domain/entity/film.dart';
+import 'package:starwars/layers/domain/entity/starship.dart';
 import 'package:starwars/layers/domain/usecase/get_all_starships.dart';
 import 'package:stream_transform/stream_transform.dart';
 
-part 'film_page_event.dart';
-part 'film_page_state.dart';
+part 'starship_page_event.dart';
+part 'starship_page_state.dart';
 
 EventTransformer<E> throttleDroppable<E>(Duration duration) {
   return (events, mapper) {

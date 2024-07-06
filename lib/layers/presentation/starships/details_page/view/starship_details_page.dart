@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starwars/layers/domain/entity/film.dart';
-import 'package:starwars/layers/presentation/shared/services/film_image_path.dart';
-import 'package:starwars/layers/presentation/starships/details_page/bloc/film_details_bloc.dart';
+import 'package:starwars/layers/domain/entity/starship.dart';
+import 'package:starwars/layers/presentation/shared/services/vehicle_image_path.dart';
+import 'package:starwars/layers/presentation/starships/details_page/bloc/starship_details_bloc.dart';
 import 'package:starwars/layers/presentation/shared/services/person_image_path.dart';
 
 // -----------------------------------------------------------------------------
@@ -11,11 +11,11 @@ import 'package:starwars/layers/presentation/shared/services/person_image_path.d
 class StarshipDetailsPage extends StatelessWidget {
   const StarshipDetailsPage({super.key});
 
-  static Route<void> route({required Starship film}) {
+  static Route<void> route({required Starship starship}) {
     return MaterialPageRoute(
       builder: (context) {
         return BlocProvider(
-          create: (_) => StarshipDetailsBloc(film: film),
+          create: (_) => StarshipDetailsBloc(starship: starship),
           child: const StarshipDetailsPage(),
         );
       },
@@ -60,18 +60,18 @@ class _Content extends StatelessWidget {
     return SingleChildScrollView(
       child: Builder(
         builder: (ctx) {
-          final film = ctx.select(
-            (StarshipDetailsBloc b) => b.state.film,
+          final starship = ctx.select(
+            (StarshipDetailsBloc b) => b.state.starship,
           );
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Hero(
-                tag: film.url ?? '',
+                tag: starship.url ?? '',
 
-                child:
-                    Image.asset(StarshipImageService.getImagePath(film.title!)),
+                child: Image.asset(
+                    VehicleImageService.getImagePathFromUrl(starship.url!)),
                 // child: CachedNetworkImage(
                 //   imageUrl:
                 //       'https://artofthemovies.co.uk/cdn/shop/products/IMG_1250.jpg?v=1659794460',
@@ -87,7 +87,7 @@ class _Content extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        film.title ?? '',
+                        starship.name ?? '',
                         style: textTheme.displaySmall!.copyWith(
                           color: colorScheme.onSurfaceVariant,
                           fontWeight: FontWeight.bold,
@@ -98,7 +98,7 @@ class _Content extends StatelessWidget {
                       const Divider(height: 1),
                       Builder(
                         builder: (ctx) {
-                          return _DetailsWidgetList(film: film);
+                          return _DetailsWidgetList(starship: starship);
                         },
                       ),
                     ],
@@ -118,9 +118,9 @@ class _Content extends StatelessWidget {
                 height: 80,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: film.people?.length ?? 0,
+                  itemCount: starship.films?.length ?? 0,
                   itemBuilder: (context, index) {
-                    final ep = film.people![index];
+                    final ep = starship.films![index];
                     return EpisodeItem(ep: ep);
                   },
                 ),
@@ -170,8 +170,8 @@ class EpisodeItem extends StatelessWidget {
 }
 
 class _DetailsWidgetList extends StatelessWidget {
-  const _DetailsWidgetList({super.key, required this.film});
-  final Starship film;
+  const _DetailsWidgetList({super.key, required this.starship});
+  final Starship starship;
 
   @override
   Widget build(BuildContext context) {
@@ -182,42 +182,91 @@ class _DetailsWidgetList extends StatelessWidget {
       children: [
         const SizedBox(height: 16),
         Text(
-          'Title: ${film.title ?? ''}',
+          'Name: ${starship.name ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Episode ID: ${film.episodeId ?? ''}',
+          'Model: ${starship.model ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Opening Crawl: ${film.openingCrawl ?? ''}',
+          'Manufacturer: ${starship.manufacturer ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Director: ${film.director ?? ''}',
+          'Cost in Credits: ${starship.costInCredits ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Producer: ${film.producer ?? ''}',
+          'Length: ${starship.length ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Release Date: ${film.releaseDate ?? ''}',
+          'Max Atmosphering Speed: ${starship.maxAtmospheringSpeed ?? ''}',
+          style: textTheme.bodyMedium!.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Crew: ${starship.crew ?? ''}',
+          style: textTheme.bodyMedium!.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Passengers: ${starship.passengers ?? ''}',
+          style: textTheme.bodyMedium!.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Cargo Capacity: ${starship.cargoCapacity ?? ''}',
+          style: textTheme.bodyMedium!.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Consumables: ${starship.consumables ?? ''}',
+          style: textTheme.bodyMedium!.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Hyperdrive Rating: ${starship.hyperdriveRating ?? ''}',
+          style: textTheme.bodyMedium!.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'MGLT: ${starship.mglt ?? ''}',
+          style: textTheme.bodyMedium!.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Starship Class: ${starship.starshipClass ?? ''}',
           style: textTheme.bodyMedium!.copyWith(
             color: colorScheme.onSurfaceVariant,
           ),
