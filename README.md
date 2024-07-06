@@ -1,8 +1,24 @@
-# Flutter - Starwars land Clean Architecture with State Management :BLoC
-## How the app is divided:
-![screenshot-20240706-205923Z-selected](https://github.com/mhosnyessa/star_wars_land/assets/65831561/c4972031-0123-4d15-844d-44091cbc5fac)
+# Flutter - Starwars land Clean Architecture with State Management :BLoC (The app saves the data offline)
+
 
 ![Build Status](https://github.com/guilherme-v/flutter-clean-architecture-example/actions/workflows/main.yaml/badge.svg)
+
+## How the app is divided:
+![screenshot-20240706-205923Z-selected](https://github.com/mhosnyessa/star_wars_land/assets/65831561/c4972031-0123-4d15-844d-44091cbc5fac)
+# Screenshots:
+![screenshot-20240706-210619Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/89f0bee0-012a-4e4e-80c1-2fac210073b0)
+![screenshot-20240706-210626Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/4343706b-03a2-4148-864e-179c504f1f66)
+![screenshot-20240706-210629Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/ce9e71e9-82c9-4aa5-9a90-1261b09106c3)
+![screenshot-20240706-210633Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/4749571c-5a4f-4ccb-8804-a1e3f5201f68)![screenshot-20240706-210617Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/38a4d1a3-2b12-4f85-a3b5-8b0f0a023200)
+![screenshot-20240706-210634Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/08abf9df-73ec-409b-b65b-475ecfb65ba8)
+![screenshot-20240706-210640Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/4412b281-a00a-470d-93ae-58b24e0913a5)
+![screenshot-20240706-210646Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/e90028da-2bef-4c68-815f-8edfa2729f0c)
+![screenshot-20240706-210648Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/61ab10c2-42d6-4b82-9d97-24c513150818)
+![screenshot-20240706-210651Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/ae4f2292-b67b-4b96-a8ff-9355cb430b78)
+![screenshot-20240706-210704Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/14ad198c-aee8-411d-a892-54598f33d2a9)
+![screenshot-20240706-210708Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/8526ef6d-9000-4857-82f0-20e83c8db545)
+
+
 ## A short description about "Clean Architecture" ( credit: Silva.guilherme)
 
 ![architecture](./art/arch_1.png?raw=true)
