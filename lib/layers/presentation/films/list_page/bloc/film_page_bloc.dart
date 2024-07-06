@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
@@ -23,6 +25,10 @@ class FilmPageBloc extends Bloc<FilmPageEvent, FilmPageState> {
       _fetchNextPage,
       transformer: throttleDroppable(const Duration(milliseconds: 100)),
     );
+    on<SearchInputPageEvent>(
+      _searchInput,
+      transformer: throttleDroppable(const Duration(milliseconds: 100)),
+    );
   }
 
   final GetAllFilms _getAllFilm;
@@ -42,5 +48,24 @@ class FilmPageBloc extends Bloc<FilmPageEvent, FilmPageState> {
         currentPage: state.currentPage + 1,
       ),
     );
+  }
+
+  FutureOr<void> _searchInput(
+    SearchInputPageEvent event,
+    Emitter<FilmPageState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        searchQuery: event.query,
+      ),
+    );
+  }
+
+  static List<Film> searchPeople(List<Film> people, String query) {
+    final lowerCaseQuery = query.toLowerCase();
+    return people.where((film) {
+      final lowerCaseName = film.title.toString().toLowerCase();
+      return lowerCaseName.contains(lowerCaseQuery);
+    }).toList();
   }
 }

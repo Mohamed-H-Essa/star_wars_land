@@ -8,24 +8,28 @@ class SpeciePageState extends Equatable {
     this.species = const [],
     this.hasReachedEnd = false,
     this.currentPage = 1,
+    this.searchQuery = '',
   });
 
   final SpeciePageStatus status;
   final List<Specie> species;
   final bool hasReachedEnd;
   final int currentPage;
+  final String searchQuery;
 
   SpeciePageState copyWith({
     SpeciePageStatus? status,
     List<Specie>? species,
     bool? hasReachedEnd,
     int? currentPage,
+    String? searchQuery,
   }) {
     return SpeciePageState(
       status: status ?? this.status,
       species: species ?? this.species,
       hasReachedEnd: hasReachedEnd ?? this.hasReachedEnd,
       currentPage: currentPage ?? this.currentPage,
+      searchQuery: searchQuery ?? this.searchQuery,
     );
   }
 
@@ -35,5 +39,6 @@ class SpeciePageState extends Equatable {
         species,
         hasReachedEnd,
         currentPage,
+        searchQuery,
       ];
 }

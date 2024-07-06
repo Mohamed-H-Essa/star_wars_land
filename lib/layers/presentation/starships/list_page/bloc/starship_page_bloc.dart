@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
@@ -23,6 +25,10 @@ class StarshipPageBloc extends Bloc<StarshipPageEvent, StarshipPageState> {
       _fetchNextPage,
       transformer: throttleDroppable(const Duration(milliseconds: 100)),
     );
+    on<SearchInputPageEvent>(
+      _searchInput,
+      transformer: throttleDroppable(const Duration(milliseconds: 100)),
+    );
   }
 
   final GetAllStarships _getAllStarship;
@@ -42,5 +48,24 @@ class StarshipPageBloc extends Bloc<StarshipPageEvent, StarshipPageState> {
         currentPage: state.currentPage + 1,
       ),
     );
+  }
+
+  FutureOr<void> _searchInput(
+    SearchInputPageEvent event,
+    Emitter<StarshipPageState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        searchQuery: event.query,
+      ),
+    );
+  }
+
+  static List<Starship> searchPeople(List<Starship> people, String query) {
+    final lowerCaseQuery = query.toLowerCase();
+    return people.where((film) {
+      final lowerCaseName = film.name.toString().toLowerCase();
+      return lowerCaseName.contains(lowerCaseQuery);
+    }).toList();
   }
 }
