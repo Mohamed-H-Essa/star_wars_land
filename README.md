@@ -1,4 +1,6 @@
 # Flutter - Starwars land Clean Architecture with State Management :BLoC
+## How the app is divided:
+![screenshot-20240706-205923Z-selected](https://github.com/mhosnyessa/star_wars_land/assets/65831561/c4972031-0123-4d15-844d-44091cbc5fac)
 
 ![Build Status](https://github.com/guilherme-v/flutter-clean-architecture-example/actions/workflows/main.yaml/badge.svg)
 ## A short description about "Clean Architecture" ( credit: Silva.guilherme)
