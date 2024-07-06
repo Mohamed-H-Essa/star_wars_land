@@ -8,24 +8,28 @@ class PersonPageState extends Equatable {
     this.people = const [],
     this.hasReachedEnd = false,
     this.currentPage = 1,
+    this.searchQuery = '',
   });
 
   final PersonPageStatus status;
   final List<Person> people;
   final bool hasReachedEnd;
   final int currentPage;
+  final String searchQuery;
 
   PersonPageState copyWith({
     PersonPageStatus? status,
     List<Person>? people,
     bool? hasReachedEnd,
     int? currentPage,
+    String? searchQuery,
   }) {
     return PersonPageState(
       status: status ?? this.status,
       people: people ?? this.people,
       hasReachedEnd: hasReachedEnd ?? this.hasReachedEnd,
       currentPage: currentPage ?? this.currentPage,
+      searchQuery: searchQuery ?? this.searchQuery,
     );
   }
 
@@ -35,5 +39,6 @@ class PersonPageState extends Equatable {
         people,
         hasReachedEnd,
         currentPage,
+        searchQuery,
       ];
 }

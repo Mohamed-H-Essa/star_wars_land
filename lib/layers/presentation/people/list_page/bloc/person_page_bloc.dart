@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
@@ -23,6 +25,10 @@ class PersonPageBloc extends Bloc<PersonPageEvent, PersonPageState> {
       _fetchNextPage,
       transformer: throttleDroppable(const Duration(milliseconds: 100)),
     );
+    on<SearchInputPageEvent>(
+      _searchInput,
+      transformer: throttleDroppable(const Duration(milliseconds: 100)),
+    );
   }
 
   final GetAllPeople _getAllPeople;
@@ -37,10 +43,30 @@ class PersonPageBloc extends Bloc<PersonPageEvent, PersonPageState> {
     emit(
       state.copyWith(
         status: PersonPageStatus.success,
-        people: List.of(state.people)..addAll(list),
+        people: _searchPeople(List.of(state.people)..addAll(list), 'Luke'),
         hasReachedEnd: list.isEmpty,
         currentPage: state.currentPage + 1,
       ),
     );
+  }
+
+  FutureOr<void> _searchInput(
+    SearchInputPageEvent event,
+    Emitter<PersonPageState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        searchQuery: event.query,
+        people: _searchPeople(state.people, event.query),
+      ),
+    );
+  }
+
+  List<Person> _searchPeople(List<Person> people, String query) {
+    final lowerCaseQuery = query.toLowerCase();
+    return people.where((person) {
+      final lowerCaseName = person.name.toString().toLowerCase();
+      return lowerCaseName.contains(lowerCaseQuery);
+    }).toList();
   }
 }

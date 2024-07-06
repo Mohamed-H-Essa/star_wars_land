@@ -10,3 +10,8 @@ sealed class PersonPageEvent extends Equatable {
 final class FetchNextPageEvent extends PersonPageEvent {
   const FetchNextPageEvent();
 }
+
+final class SearchInputPageEvent extends PersonPageEvent {
+  const SearchInputPageEvent(this.query);
+  final String query;
+}
