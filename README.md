@@ -4,7 +4,8 @@
 ![Build Status](https://github.com/guilherme-v/flutter-clean-architecture-example/actions/workflows/main.yaml/badge.svg)
 
 ## How the app is divided:
-![screenshot-20240706-205923Z-selected](https://github.com/mhosnyessa/star_wars_land/assets/65831561/c4972031-0123-4d15-844d-44091cbc5fac)
+![screenshot-20240706-210919Z-selected](https://github.com/mhosnyessa/star_wars_land/assets/65831561/5fb19e83-eef9-459b-a5e9-bdc2d66f2996)
+
 # Screenshots:
 ![screenshot-20240706-210619Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/89f0bee0-012a-4e4e-80c1-2fac210073b0)
 ![screenshot-20240706-210626Z-current](https://github.com/mhosnyessa/star_wars_land/assets/65831561/4343706b-03a2-4148-864e-179c504f1f66)
