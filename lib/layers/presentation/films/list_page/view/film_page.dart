@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starwars/layers/domain/entity/vehicle.dart';
-import 'package:starwars/layers/domain/usecase/get_all_vehicles.dart';
+import 'package:starwars/layers/domain/entity/film.dart';
+import 'package:starwars/layers/domain/usecase/get_all_films.dart';
 import 'package:starwars/layers/presentation/material_app.dart';
 import 'package:starwars/layers/presentation/shared/list_item_header.dart';
 import 'package:starwars/layers/presentation/shared/list_item_loading.dart';
-import 'package:starwars/layers/presentation/vehicles/details_page/view/vehicle_details_page.dart';
-import 'package:starwars/layers/presentation/vehicles/list_page/bloc/vehicle_page_bloc.dart';
-import 'package:starwars/layers/presentation/vehicles/shared/vehicle_list_item.dart';
+import 'package:starwars/layers/presentation/films/details_page/view/film_details_page.dart';
+import 'package:starwars/layers/presentation/films/list_page/bloc/film_page_bloc.dart';
+import 'package:starwars/layers/presentation/films/shared/film_list_item.dart';
 
 // -----------------------------------------------------------------------------
 // Page
 // -----------------------------------------------------------------------------
-class VehiclePage extends StatelessWidget {
-  const VehiclePage({super.key});
+class FilmPage extends StatelessWidget {
+  const FilmPage({super.key});
 
   static Route<void> route() {
     return MaterialPageRoute(
       builder: (context) {
-        return const VehiclePage();
+        return const FilmPage();
       },
     );
   }
@@ -26,12 +26,12 @@ class VehiclePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => VehiclePageBloc(
-        getAllVehicle: context.read<GetAllVehicles>(),
+      create: (context) => FilmPageBloc(
+        getAllFilm: context.read<GetAllFilms>(),
       )..add(const FetchNextPageEvent()),
       child: Builder(
         builder: (context) {
-          return MaterialAppK(body: VehicleView());
+          return MaterialAppK(body: FilmView());
         },
       ),
     );
@@ -41,13 +41,13 @@ class VehiclePage extends StatelessWidget {
 // -----------------------------------------------------------------------------
 // View
 // -----------------------------------------------------------------------------
-class VehicleView extends StatelessWidget {
-  const VehicleView({super.key});
+class FilmView extends StatelessWidget {
+  const FilmView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final status = context.select((VehiclePageBloc b) => b.state.status);
-    return status == VehiclePageStatus.initial
+    final status = context.select((FilmPageBloc b) => b.state.status);
+    return status == FilmPageStatus.initial
         ? const Center(child: CircularProgressIndicator())
         : const _Content();
   }
@@ -66,7 +66,7 @@ class _Content extends StatefulWidget {
 class __ContentState extends State<_Content> {
   final _scrollController = ScrollController();
 
-  VehiclePageBloc get pageBloc => context.read<VehiclePageBloc>();
+  FilmPageBloc get pageBloc => context.read<FilmPageBloc>();
 
   @override
   void initState() {
@@ -76,13 +76,13 @@ class __ContentState extends State<_Content> {
 
   @override
   Widget build(BuildContext ctx) {
-    final list = ctx.select((VehiclePageBloc b) => b.state.vehicles);
-    final hasEnded = ctx.select((VehiclePageBloc b) => b.state.hasReachedEnd);
+    final list = ctx.select((FilmPageBloc b) => b.state.films);
+    final hasEnded = ctx.select((FilmPageBloc b) => b.state.hasReachedEnd);
 
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
       child: ListView.builder(
-        key: const ValueKey('vehicle_page_list_key'),
+        key: const ValueKey('film_page_list_key'),
         controller: _scrollController,
         itemCount: hasEnded ? list.length : list.length + 1,
         itemBuilder: (context, index) {
@@ -93,18 +93,18 @@ class __ContentState extends State<_Content> {
           return index == 0
               ? Column(
                   children: [
-                    const ListItemHeader(titleText: 'All Vehicles'),
-                    VehicleListItem(item: item, onTap: _goToDetails),
+                    const ListItemHeader(titleText: 'All Films'),
+                    FilmListItem(item: item, onTap: _goToDetails),
                   ],
                 )
-              : VehicleListItem(item: item, onTap: _goToDetails);
+              : FilmListItem(item: item, onTap: _goToDetails);
         },
       ),
     );
   }
 
-  void _goToDetails(Vehicle vehicle) {
-    final route = VehicleDetailsPage.route(vehicle: vehicle);
+  void _goToDetails(Film film) {
+    final route = FilmDetailsPage.route(film: film);
     Navigator.of(context).push(route);
   }
 

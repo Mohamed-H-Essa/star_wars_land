@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starwars/layers/domain/entity/person.dart';
 import 'package:starwars/layers/domain/usecase/get_all_people.dart';
 import 'package:starwars/layers/domain/usecase/get_all_vehicles.dart';
+import 'package:starwars/layers/presentation/material_app.dart';
 import 'package:starwars/layers/presentation/people/details_page/view/person_details_page.dart';
 import 'package:starwars/layers/presentation/people/list_page/bloc/person_page_bloc.dart';
 import 'package:starwars/layers/presentation/people/shared/person_list_item.dart';
@@ -77,35 +78,28 @@ class __ContentState extends State<_Content> {
     final list = ctx.select((PersonPageBloc b) => b.state.people);
     final hasEnded = ctx.select((PersonPageBloc b) => b.state.hasReachedEnd);
 
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16),
-      child: ListView.builder(
-        key: const ValueKey('person_page_list_key'),
-        controller: _scrollController,
-        itemCount: hasEnded ? list.length : list.length + 1,
-        itemBuilder: (context, index) {
-          if (index >= list.length) {
-            return !hasEnded ? const ListItemLoading() : const SizedBox();
-          }
-          final item = list[index];
-          return index == 0
-              ? Column(
-                  children: [
-                    TextButton(
-                        onPressed: () async {
-                          final res =
-                              await context.read<GetAllVehicles>().call();
-                          print(res);
-                          Navigator.of(context)
-                              .push<void>(VehiclePage.route(context));
-                        },
-                        child: Text('from person page nav')),
-                    const ListItemHeader(titleText: 'All People'),
-                    PersonListItem(item: item, onTap: _goToDetails),
-                  ],
-                )
-              : PersonListItem(item: item, onTap: _goToDetails);
-        },
+    return MaterialAppK(
+      body: Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16),
+        child: ListView.builder(
+          key: const ValueKey('person_page_list_key'),
+          controller: _scrollController,
+          itemCount: hasEnded ? list.length : list.length + 1,
+          itemBuilder: (context, index) {
+            if (index >= list.length) {
+              return !hasEnded ? const ListItemLoading() : const SizedBox();
+            }
+            final item = list[index];
+            return index == 0
+                ? Column(
+                    children: [
+                      const ListItemHeader(titleText: 'All People'),
+                      PersonListItem(item: item, onTap: _goToDetails),
+                    ],
+                  )
+                : PersonListItem(item: item, onTap: _goToDetails);
+          },
+        ),
       ),
     );
   }

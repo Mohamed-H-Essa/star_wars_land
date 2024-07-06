@@ -117,4 +117,7 @@ flutter:
     - assets/fonts/
     - assets/images/
     - assets/images/images/vehicles/
+    - assets/images/images/planets/
+    - assets/images/images/planets/
+    - assets/images/images/movies/
     - assets/people/

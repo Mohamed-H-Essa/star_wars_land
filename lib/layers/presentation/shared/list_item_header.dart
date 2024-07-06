@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starwars/layers/presentation/people/details_page/view/person_details_page.dart';
 import 'package:starwars/layers/presentation/people/list_page/view/person_page.dart';
+import 'package:starwars/layers/presentation/planets/list_page/view/planet_page.dart';
 import 'package:starwars/layers/presentation/vehicles/list_page/view/vehicle_page.dart';
 
 class ListItemHeader extends StatelessWidget {
@@ -19,34 +20,30 @@ class ListItemHeader extends StatelessWidget {
     void _goToPage(String option) {
       switch (option) {
         case 'All People':
-          Navigator.of(context).push<void>(PersonPage.route());
+          Navigator.of(context).pushReplacement(PersonPage.route());
           break;
         case 'All Vehicles':
-          Navigator.of(context).push<void>(VehiclePage.route(context));
+          Navigator.of(context).pushReplacement(VehiclePage.route());
+          break;
+        case 'All Planets':
+          Navigator.of(context).pushReplacement(PlanetPage.route());
           break;
         default:
-          Navigator.of(context).push<void>(PersonPage.route());
+          Navigator.of(context).pushReplacement(PersonPage.route());
       }
     }
 
     return Column(
       children: [
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).push<void>(VehiclePage.route(context));
-          },
-          child: Text(
-            'hi',
-          ),
-        ),
         PopupMenuButton(
           onSelected: (value) {
             _goToPage(value);
           },
           itemBuilder: (ctx) {
             return [
-              _menuEntry('All Peopl'),
-              _menuEntry('All Vehicles'),
+              _menuEntry('All People', titleText: titleText),
+              _menuEntry('All Vehicles', titleText: titleText),
+              _menuEntry('All Planets', titleText: titleText),
             ];
           },
           child: Card(
@@ -89,12 +86,13 @@ class ListItemHeader extends StatelessWidget {
     );
   }
 
-  PopupMenuItem<dynamic> _menuEntry(
-    String text,
-  ) {
+  PopupMenuItem<dynamic> _menuEntry(String text, {required String titleText}) {
     return PopupMenuItem(
       value: text,
-      child: Text(text),
+      child: Text(
+        text,
+        style: TextStyle(color: text == titleText ? Colors.red : null),
+      ),
     );
   }
 }

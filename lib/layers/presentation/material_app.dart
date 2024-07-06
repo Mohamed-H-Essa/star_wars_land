@@ -1,61 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:starwars/layers/data/starwars_repository_impl.dart';
-import 'package:starwars/layers/data/source/local/local_storage.dart';
-import 'package:starwars/layers/data/source/network/api.dart';
-import 'package:starwars/layers/domain/usecase/get_all_films.dart';
-import 'package:starwars/layers/domain/usecase/get_all_people.dart';
-import 'package:starwars/layers/domain/usecase/get_all_planets.dart';
-import 'package:starwars/layers/domain/usecase/get_all_species.dart';
-import 'package:starwars/layers/domain/usecase/get_all_starships.dart';
-import 'package:starwars/layers/domain/usecase/get_all_vehicles.dart';
 import 'package:starwars/layers/presentation/theme.dart';
 import 'package:starwars/layers/presentation/app_using_bloc.dart';
 import 'package:starwars/main.dart';
 
-class AppRoot extends StatefulWidget {
-  const AppRoot({super.key});
+class MaterialAppK extends StatefulWidget {
+  const MaterialAppK({super.key, required this.body});
+  final Widget body;
 
   @override
-  State<AppRoot> createState() => _AppRootState();
+  State<MaterialAppK> createState() => _MaterialAppKState();
 }
 
-class _AppRootState extends State<AppRoot> {
-  late StateManagementOptions _currentOption;
-  late GetAllPeople _getAllPeople;
-  late GetAllFilms _getAllFilms;
-  late GetAllPlanets _getAllPlanets;
-  late GetAllSpecies _getAllSpecies;
-  late GetAllStarships _getAllStarships;
-  late GetAllVehicles _getAllVehicles;
-
+class _MaterialAppKState extends State<MaterialAppK> {
   var themeMode = ThemeMode.dark;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentOption = StateManagementOptions.bloc;
-
-    // Notice:
-    //
-    // Some state management packages are also D.I. (Dependency Injection)
-    // solutions. To avoid polluting this example with unnecessary repetition,
-    // we're creating the object instances here and passing them as parameters
-    // to each state management's "root" widgets. Then we'll use the library's
-    // specific D.I. widget to make the instance accessible to the rest of the
-    // widget tree.
-    //
-    final api = ApiImpl();
-    final localStorage = LocalStorageImpl(sharedPreferences: sharedPref);
-    final repo = StarwarsRepositoryImpl(api: api, localStorage: localStorage);
-
-    _getAllPeople = GetAllPeople(repository: repo);
-    _getAllFilms = GetAllFilms(repository: repo);
-    _getAllPlanets = GetAllPlanets(repository: repo);
-    _getAllSpecies = GetAllSpecies(repository: repo);
-    _getAllStarships = GetAllStarships(repository: repo);
-    _getAllVehicles = GetAllVehicles(repository: repo);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +34,7 @@ class _AppRootState extends State<AppRoot> {
               title: Transform.translate(
                 offset: const Offset(10, 0),
                 child: Text(
-                  'Starwars\n(${getTitleToOption(_currentOption)})',
+                  'Starwars',
                   style: tt.headlineLarge!.copyWith(
                     color: cs.onSurfaceVariant,
                     fontWeight: FontWeight.bold,
@@ -101,14 +59,16 @@ class _AppRootState extends State<AppRoot> {
                 // ),
               ],
             ),
-            body: AppUsingBloc(
-              getAllPeople: _getAllPeople,
-              getAllFilms: _getAllFilms,
-              getAllPlanets: _getAllPlanets,
-              getAllSpecies: _getAllSpecies,
-              getAllStarships: _getAllStarships,
-              getAllVehicles: _getAllVehicles,
-            ).animate().fadeIn(delay: 1.2.seconds, duration: .7.seconds),
+
+            body: widget.body,
+            // body: AppUsingBloc(
+            //   getAllPeople: _getAllPeople,
+            //   getAllFilms: _getAllFilms,
+            //   getAllPlanets: _getAllPlanets,
+            //   getAllSpecies: _getAllSpecies,
+            //   getAllStarships: _getAllStarships,
+            //   getAllVehicles: _getAllVehicles,
+            // ).animate().fadeIn(delay: 1.2.seconds, duration: .7.seconds),
           );
         },
       ),
@@ -139,15 +99,6 @@ class _AppRootState extends State<AppRoot> {
   //     ),
   //   );
   // }
-
-  String getTitleToOption(StateManagementOptions option) {
-    switch (option) {
-      case (StateManagementOptions.bloc):
-        return 'BLOC';
-      default:
-        return '';
-    }
-  }
 
   bool get useLightMode {
     switch (themeMode) {

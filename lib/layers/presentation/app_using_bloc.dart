@@ -6,6 +6,7 @@ import 'package:starwars/layers/domain/usecase/get_all_planets.dart';
 import 'package:starwars/layers/domain/usecase/get_all_species.dart';
 import 'package:starwars/layers/domain/usecase/get_all_starships.dart';
 import 'package:starwars/layers/domain/usecase/get_all_vehicles.dart';
+import 'package:starwars/layers/presentation/material_app.dart';
 import 'package:starwars/layers/presentation/people/list_page/view/person_page.dart';
 import 'package:starwars/layers/presentation/vehicles/list_page/view/vehicle_page.dart';
 
@@ -38,7 +39,8 @@ class AppUsingBloc extends StatelessWidget {
         RepositoryProvider.value(value: getAllStarships),
         RepositoryProvider.value(value: getAllVehicles),
       ],
-      child: const AppView(),
+      // child: const AppView(),
+      child: PersonPage(),
     );
   }
 }
