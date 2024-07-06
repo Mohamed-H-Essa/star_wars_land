@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starwars/layers/domain/entity/film.dart';
 import 'package:starwars/layers/presentation/shared/services/film_image_path.dart';
-import 'package:starwars/layers/presentation/films/details_page/bloc/film_details_bloc.dart';
+import 'package:starwars/layers/presentation/starships/details_page/bloc/film_details_bloc.dart';
 import 'package:starwars/layers/presentation/shared/services/person_image_path.dart';
 
 // -----------------------------------------------------------------------------
 // Page
 // -----------------------------------------------------------------------------
-class FilmDetailsPage extends StatelessWidget {
-  const FilmDetailsPage({super.key});
+class StarshipDetailsPage extends StatelessWidget {
+  const StarshipDetailsPage({super.key});
 
-  static Route<void> route({required Film film}) {
+  static Route<void> route({required Starship film}) {
     return MaterialPageRoute(
       builder: (context) {
         return BlocProvider(
-          create: (_) => FilmDetailsBloc(film: film),
-          child: const FilmDetailsPage(),
+          create: (_) => StarshipDetailsBloc(film: film),
+          child: const StarshipDetailsPage(),
         );
       },
     );
@@ -24,15 +24,15 @@ class FilmDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const FilmDetailsView();
+    return const StarshipDetailsView();
   }
 }
 
 // -----------------------------------------------------------------------------
 // View
 // -----------------------------------------------------------------------------
-class FilmDetailsView extends StatelessWidget {
-  const FilmDetailsView({super.key});
+class StarshipDetailsView extends StatelessWidget {
+  const StarshipDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _Content extends StatelessWidget {
       child: Builder(
         builder: (ctx) {
           final film = ctx.select(
-            (FilmDetailsBloc b) => b.state.film,
+            (StarshipDetailsBloc b) => b.state.film,
           );
 
           return Column(
@@ -70,7 +70,8 @@ class _Content extends StatelessWidget {
               Hero(
                 tag: film.url ?? '',
 
-                child: Image.asset(FilmImageService.getImagePath(film.title!)),
+                child:
+                    Image.asset(StarshipImageService.getImagePath(film.title!)),
                 // child: CachedNetworkImage(
                 //   imageUrl:
                 //       'https://artofthemovies.co.uk/cdn/shop/products/IMG_1250.jpg?v=1659794460',
@@ -170,7 +171,7 @@ class EpisodeItem extends StatelessWidget {
 
 class _DetailsWidgetList extends StatelessWidget {
   const _DetailsWidgetList({super.key, required this.film});
-  final Film film;
+  final Starship film;
 
   @override
   Widget build(BuildContext context) {

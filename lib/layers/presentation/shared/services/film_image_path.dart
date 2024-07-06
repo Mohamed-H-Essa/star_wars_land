@@ -1,56 +1,24 @@
-class PlanetImageService {
-  static const String basePath = 'assets/images/images/planets/';
-  static const List<String> availableImages = [
-    'Aldera_City.png',
-    'Coruscant.jpg',
-    'Endor.jpg',
-    'hoths.jpg',
-    'Naboo.png',
-    'Bespin.png',
-    'Dagobah.jpg',
-    'Geonosis.jpeg',
-    'Kamino.png',
-    'yavin_iv.jpg',
-  ];
+class FilmImageService {
+  static const String basePath = 'assets/images/images/movies/';
 
-  static String getImagePathFromName(String name) {
-    String imageName = '';
-    switch (name) {
-      case 'Alderaan':
-        imageName = 'Aldera_City.png';
-        break;
-      case 'Coruscant':
-        imageName = 'Coruscant.jpg';
-        break;
-      case 'Endor':
-        imageName = 'Endor.jpg';
-        break;
-      case 'Hoth':
-        imageName = 'hoths.jpg';
-        break;
-      case 'Naboo':
-        imageName = 'Naboo.png';
-        break;
-      case 'Bespin':
-        imageName = 'Bespin.png';
-        break;
-      case 'Dagobah':
-        imageName = 'Dagobah.jpg';
-        break;
-      case 'Geonosis':
-        imageName = 'Geonosis.jpeg';
-        break;
-      case 'Kamino':
-        imageName = 'Kamino.png';
-        break;
-      case 'Yavin IV':
-        imageName = 'yavin_iv.jpg';
-        break;
+  static String getImagePath(String filmTitle) {
+    switch (filmTitle) {
+      case 'A New Hope':
+        return '${basePath}episodeIV.jpg';
+      case 'The Empire Strikes Back':
+        return '${basePath}episodeV.jpg';
+      case 'Return of the Jedi':
+        return '${basePath}episodeVI.jpg';
+      case 'The Phantom Menace':
+        return '${basePath}episodeI.jpg';
+      case 'Attack of the Clones':
+        return '${basePath}episodeII.jpg';
+      case 'Revenge of the Sith':
+        return '${basePath}episodeIII.jpg';
+      case 'The Force Awakens':
+        return '${basePath}episodeVII.jpg';
       default:
-        imageName =
-            availableImages.first; // Default to the first available image
+        return '${basePath}episodeVII.jpg';
     }
-    if (availableImages.contains(imageName)) return '$basePath$imageName';
-    return '$basePath${availableImages.first}';
   }
 }

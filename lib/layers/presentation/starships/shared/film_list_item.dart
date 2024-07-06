@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:starwars/layers/domain/entity/film.dart';
 import 'package:starwars/layers/presentation/shared/services/film_image_path.dart';
 
-typedef OnFilmListItemTap = void Function(Film person);
+typedef OnStarshipListItemTap = void Function(Starship person);
 
-class FilmListItem extends StatelessWidget {
-  const FilmListItem({
+class StarshipListItem extends StatelessWidget {
+  const StarshipListItem({
     super.key,
     required this.item,
     this.onTap,
   });
 
-  final Film item;
-  final OnFilmListItemTap? onTap;
+  final Starship item;
+  final OnStarshipListItemTap? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class FilmListItem extends StatelessWidget {
 class _ItemDescription extends StatelessWidget {
   const _ItemDescription({super.key, required this.item});
 
-  final Film item;
+  final Starship item;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class _ItemDescription extends StatelessWidget {
 class _ItemPhoto extends StatelessWidget {
   const _ItemPhoto({super.key, required this.item});
 
-  final Film item;
+  final Starship item;
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +99,7 @@ class _ItemPhoto extends StatelessWidget {
         child: Hero(
           tag: item.url ?? '',
           child: Image.asset(
-            FilmImageService.getImagePath(
+            StarshipImageService.getImagePath(
               item.title!,
             ),
             fit: BoxFit.cover,

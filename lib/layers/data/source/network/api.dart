@@ -88,8 +88,11 @@ class ApiImpl implements Api {
       final l = (response.data!['results'] as List<dynamic>)
           .map((e) => fromMap(e))
           .toList();
+
+      print('loading films');
       return l;
     } on DioException catch (e) {
+      print('Errorrrrrrr');
       if (e.response?.statusCode == 404) return [];
       print('error retreiving');
       print(e);

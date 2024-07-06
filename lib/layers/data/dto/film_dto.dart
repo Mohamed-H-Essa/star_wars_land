@@ -3,20 +3,20 @@ import 'package:starwars/layers/domain/entity/film.dart';
 
 class FilmDto extends Film {
   FilmDto({
-    super.people,
+    // super.people,
     super.created,
     super.director,
     super.edited,
     super.episodeId,
     super.openingCrawl,
-    super.planets,
+    // super.planets,
     super.producer,
     super.releaseDate,
-    super.species,
-    super.starships,
+    // super.species,
+    // super.starships,
     super.title,
     super.url,
-    super.vehicles,
+    // super.vehicles,
   });
 
   // ---------------------------------------------------------------------------
@@ -30,36 +30,36 @@ class FilmDto extends Film {
   // Maps
   // ---------------------------------------------------------------------------
   factory FilmDto.fromMap(Map<String, dynamic> json) => FilmDto(
-        people: List<String>.from(json['people'].map((x) => x)),
+        // people: List<String>.from(json['people'].map((x) => x)),
         created: json['created'],
         director: json['director'],
         edited: json['edited'],
         episodeId: json['episode_id'],
         openingCrawl: json['opening_crawl'],
-        planets: List<String>.from(json['planets'].map((x) => x)),
+        // planets: List<String>.from(json['planets'].map((x) => x)),
         producer: json['producer'],
         releaseDate: json['release_date'],
-        species: List<String>.from(json['species'].map((x) => x)),
-        starships: List<String>.from(json['starships'].map((x) => x)),
+        // species: List<String>.from(json['species'].map((x) => x)),
+        // starships: List<String>.from(json['starships'].map((x) => x)),
         title: json['title'],
         url: json['url'],
-        vehicles: List<String>.from(json['vehicles'].map((x) => x)),
+        // vehicles: List<String>.from(json['vehicles'].map((x) => x)),
       );
 
   Map<String, dynamic> toMap() => {
-        'people': List<dynamic>.from(people!.map((x) => x)),
+        // 'people': List<dynamic>.from(people!.map((x) => x)),
         'created': created,
         'director': director,
         'edited': edited,
         'episode_id': episodeId,
         'opening_crawl': openingCrawl,
-        'planets': List<dynamic>.from(planets!.map((x) => x)),
+        // 'planets': List<dynamic>.from(planets!.map((x) => x)),
         'producer': producer,
         'release_date': releaseDate,
-        'species': List<dynamic>.from(species!.map((x) => x)),
-        'starships': List<dynamic>.from(starships!.map((x) => x)),
+        // 'species': List<dynamic>.from(species!.map((x) => x)),
+        // 'starships': List<dynamic>.from(starships!.map((x) => x)),
         'title': title,
         'url': url,
-        'vehicles': List<dynamic>.from(vehicles!.map((x) => x)),
+        // 'vehicles': List<dynamic>.from(vehicles!.map((x) => x)),
       };
 }
