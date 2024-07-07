@@ -31,7 +31,7 @@ void main() async {
   final getAllVehicles = GetAllVehicles(repository: repo);
   runApp(
     AppUsingBloc(
-      getAllPeople: getAllPeople,
+      getAllPeople: getAllPeople, //all people
       getAllFilms: getAllFilms,
       getAllPlanets: getAllPlanets,
       getAllSpecies: getAllSpecies,
