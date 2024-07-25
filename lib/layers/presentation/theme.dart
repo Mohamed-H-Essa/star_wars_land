@@ -113,23 +113,6 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
         color: colorScheme.surface.withOpacity(0.95),
       ),
       cardTheme: CardTheme(color: colorScheme.surfaceVariant),
-      // scaffoldBackgroundColor: isLight ? neutralColor : colorScheme.background,
-      // tabBarTheme: TabBarTheme(
-      //     labelColor: colorScheme.onSurface,
-      //     unselectedLabelColor: colorScheme.onSurface,
-      //     indicator: BoxDecoration(
-      //         border: Border(
-      //             bottom: BorderSide(color: colorScheme.primary, width: 2)))),
-      // floatingActionButtonTheme: FloatingActionButtonThemeData(
-      //     backgroundColor: colorScheme.secondaryContainer,
-      //     foregroundColor: colorScheme.onSecondaryContainer),
-      // navigationRailTheme: NavigationRailThemeData(
-      //     backgroundColor: isLight ? neutralColor : colorScheme.surface,
-      //     selectedIconTheme:
-      //         IconThemeData(color: colorScheme.onSecondaryContainer),
-      //     indicatorColor: colorScheme.secondaryContainer),
-      // chipTheme: ChipThemeData(
-      //     backgroundColor: isLight ? neutralColor : colorScheme.surface),
     );
   }
 
